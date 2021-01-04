@@ -9,3 +9,15 @@ services:
       - ./btc-node-1:/root/.bitcoin
       - ./btc-node-entrypoint.sh:/opt/entrypoint.sh
     entrypoint: /opt/entrypoint.sh
+    links:
+      - btc-node2
+  btc-node2:
+    image: debian
+    volumes:
+      - ../bitcoin-0.20.1/bin/bitcoin-cli:/usr/bin/bitcoin-cli
+      - ../bitcoin-0.20.1/bin/bitcoind:/usr/bin/bitcoind
+      - ./btc-node-2:/root/.bitcoin
+      - ./btc-node-entrypoint.sh:/opt/entrypoint.sh
+    entrypoint: /opt/entrypoint.sh
+    links:
+      - btc-node1
