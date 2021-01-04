@@ -1,8 +1,8 @@
-version: "3.9"
+version: "3"
 
 services:
   btc-node1:
-    image: debian/stable
+    image: debian
     volumes:
       - ../bitcoin-0.20.1/bin/bitcoin-cli:/usr/bin/bitcoin-cli
       - ../bitcoin-0.20.1/bin/bitcoind:/usr/bin/bitcoind
