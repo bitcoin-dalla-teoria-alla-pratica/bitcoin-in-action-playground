@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  btc-node1:
+    image: debian/stable
+    volumes:
+      - ../bitcoin-0.20.1/bin/bitcoin-cli:/usr/bin/bitcoin-cli
+      - ../bitcoin-0.20.1/bin/bitcoind:/usr/bin/bitcoind
+      - ./btc-node-1:/root/.bitcoin
+      - ./btc-node-entrypoint.sh:/opt/entrypoint.sh
+    entrypoint: /opt/entrypoint.sh
