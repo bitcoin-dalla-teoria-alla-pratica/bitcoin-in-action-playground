@@ -47,3 +47,13 @@ services:
     command: ['/srv/explorer/run.sh', 'bitcoin-regtest', 'explorer']
     links:
       - btc-node3
+  bitcoinjs-regtest-server:
+    image: junderw/bitcoinjs-regtest-server
+    ports:
+      - 8080:8080
+    links:
+      - btc-node1
+    volumes:
+      - ./bitcoinjs-regtest-server/bitcoin-data:/root/.bitcoin
+      - ./bitcoinjs-regtest-server/run_bitcoind_service.sh:/root/run_bitcoind_service.sh
+    
