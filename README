@@ -3,5 +3,8 @@ In questa demo andremo a creare una transazione con script custom
 che permetta alle parti di contattare un oracolo per sbloccare i fondi.
 
 
+
+PRO VERSION
+
 Building a Discreet Log Contract Oracle in NodeJS
 https://github.com/mit-dci/dlc-oracle-nodejs/blob/master/TUTORIAL.md
