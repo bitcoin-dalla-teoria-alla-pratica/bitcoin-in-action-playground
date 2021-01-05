@@ -8,6 +8,7 @@ services:
       - ../bitcoin-0.20.1/bin/bitcoind:/usr/bin/bitcoind
       - ./btc-node-1:/root/.bitcoin
       - ./btc-node-entrypoint.sh:/opt/entrypoint.sh
+      - ./shared:/opt/shared
     entrypoint: /opt/entrypoint.sh
   btc-node2:
     image: debian
@@ -16,6 +17,7 @@ services:
       - ../bitcoin-0.20.1/bin/bitcoind:/usr/bin/bitcoind
       - ./btc-node-2:/root/.bitcoin
       - ./btc-node-entrypoint.sh:/opt/entrypoint.sh
+      - ./shared:/opt/shared
     entrypoint: /opt/entrypoint.sh
     links:
       - btc-node1
@@ -26,6 +28,7 @@ services:
       - ../bitcoin-0.20.1/bin/bitcoind:/usr/bin/bitcoind
       - ./btc-node-3:/root/.bitcoin
       - ./btc-node-entrypoint.sh:/opt/entrypoint.sh
+      - ./shared:/opt/shared
       - ./btc-node3-oracle:/opt/oracle
     entrypoint: /opt/entrypoint.sh
     links:
