@@ -256,10 +256,11 @@ if [ "${NETWORK}" == "regtest" ]; then
     if [ -z "$DISABLE_GENERATETOADDRESS" ]; then
         address=$(cli -rpcwait getnewaddress)
         cli generatetoaddress 100 ${address}
-        cli stop
     else
         echo "==================> GENERATETOADDRESS IS DISABLED <=================="
     fi
+    cli -rpcwait echo wait for node
+    cli stop # here to stop daemon started at L254
 fi
 
 # Sync mempool contents from SYNC_SOURCE
