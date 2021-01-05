@@ -159,7 +159,14 @@ elif [ "$MODE" != "private-bridge" ] && [ "$MODE" != "public-bridge" ]; then
     exit 1
 fi
 
-preprocess /srv/explorer/source/contrib/${DAEMON}-${NETWORK}-${MODE}.conf.in /data/.${DAEMON}.conf
+BITCOIN_CONF_FILE=/data/.${DAEMON}.conf
+if test -f "$BITCOIN_CONF_FILE"; then
+    echo "==================> $BITCOIN_CONF_FILE exists, proceed with the following settings"
+    cat $BITCOIN_CONF_FILE
+    echo "<=================="
+else
+    preprocess /srv/explorer/source/contrib/${DAEMON}-${NETWORK}-${MODE}.conf.in $BITCOIN_CONF_FILE
+fi
 
 if [ "$DAEMON-$NETWORK" == "liquid-mainnet" ]; then
     mkdir -p /etc/service/bitcoin/log /etc/service/liquid-assets-poller/log /data/logs/bitcoin /data/logs/poller
@@ -176,11 +183,11 @@ if [ "$DAEMON-$NETWORK" == "liquid-mainnet" ]; then
 fi
 
 if [ -f /data/public_nodes ]; then
-    cat /data/public_nodes >> /data/.${DAEMON}.conf
+    cat /data/public_nodes >> $BITCOIN_CONF_FILE
 fi
 
 if [ -f /data/private_nodes ]; then
-    cat /data/private_nodes >> /data/.${DAEMON}.conf
+    cat /data/private_nodes >> $BITCOIN_CONF_FILE
 fi
 
 TORRCFILE="/srv/explorer/source/contrib/${DAEMON}-${NETWORK}-${MODE}-torrc"
@@ -189,7 +196,7 @@ if [ -f $TORRCFILE ]; then
     if [ -f /data/torrc ]; then
         # pick for random peers from the list (for private-bridge)
         shuf -n 4 /data/torrc >> /etc/tor/torrc
-        tail -4 /etc/tor/torrc | awk '{print "connect="$2":10100"}' >> /data/.${DAEMON}.conf
+        tail -4 /etc/tor/torrc | awk '{print "connect="$2":10100"}' >> $BITCOIN_CONF_FILE
     fi
 else
     echo "ControlPort 9051" >> /etc/tor/torrc
