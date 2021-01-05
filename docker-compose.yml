@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-  btc-node1:
+  hansel-btc:
     image: debian
     volumes:
       - ../bitcoin-0.20.1/bin/bitcoin-cli:/usr/bin/bitcoin-cli
@@ -10,7 +10,7 @@ services:
       - ./btc-node-entrypoint.sh:/opt/entrypoint.sh
       - ./shared:/opt/shared
     entrypoint: /opt/entrypoint.sh
-  btc-node2:
+  gretel-btc:
     image: debian
     volumes:
       - ../bitcoin-0.20.1/bin/bitcoin-cli:/usr/bin/bitcoin-cli
@@ -20,19 +20,14 @@ services:
       - ./shared:/opt/shared
     entrypoint: /opt/entrypoint.sh
     links:
-      - btc-node1
-  btc-node3:
+      - hansel-btc
+  oracle-node:
     image: node
     volumes:
-      - ../bitcoin-0.20.1/bin/bitcoin-cli:/usr/bin/bitcoin-cli
-      - ../bitcoin-0.20.1/bin/bitcoind:/usr/bin/bitcoind
-      - ./btc-node-3:/root/.bitcoin
-      - ./btc-node-entrypoint.sh:/opt/entrypoint.sh
-      - ./shared:/opt/shared
-      - ./btc-node-3-oracle:/opt/oracle
-    entrypoint: /opt/entrypoint.sh
+      - ./oracle-node:/opt/oracle
+    entrypoint: /opt/oracle/entrypoint.sh
     links:
-      - btc-node2
+      - bitcoinjs-regtest-server
   explorer:
     image: blockstream/esplora
     environment:
@@ -46,13 +41,13 @@ services:
       - ./explorer/run.sh:/srv/explorer/run.sh # patch to disable tor and auto mining of 100 blocks...
     command: ['/srv/explorer/run.sh', 'bitcoin-regtest', 'explorer']
     links:
-      - btc-node3
+      - gretel-btc
   bitcoinjs-regtest-server:
     image: junderw/bitcoinjs-regtest-server
     ports:
       - 8080:8080
     links:
-      - btc-node1
+      - hansel-btc
     volumes:
       - ./bitcoinjs-regtest-server/bitcoin-data:/root/.bitcoin
       - ./bitcoinjs-regtest-server/run_bitcoind_service.sh:/root/run_bitcoind_service.sh

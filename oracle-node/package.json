@@ -1,5 +1,5 @@
 {
-  "name": "btc-node-3-oracle",
+  "name": "oracle-node",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
