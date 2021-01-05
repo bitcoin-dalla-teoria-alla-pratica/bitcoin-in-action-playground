@@ -33,3 +33,13 @@ services:
     entrypoint: /opt/entrypoint.sh
     links:
       - btc-node2
+  explorer:
+    image: blockstream/esplora
+    ports:
+      - 50001:50001
+      - 8094:80
+    volumes:
+      - ./explorer:/data
+    command: ['/srv/explorer/run.sh', 'bitcoin-regtest', 'explorer']
+    links:
+      - btc-node3
