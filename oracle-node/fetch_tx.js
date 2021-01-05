@@ -3,14 +3,14 @@
 // For bitcoinjs-lib >=4.0.3, use version v0.0.8 of regtest-client
 const bitcoin = require('bitcoinjs-lib')
 const { RegtestUtils } = require('regtest-client')
-const regtestUtils = new RegtestUtils(bitcoin, {APIURL: 'http://bitcoinjs-regtest-server:8080/1'})
+const regtestUtils = new RegtestUtils({APIURL: 'http://bitcoinjs-regtest-server:8080/1'})
 
 const network = regtestUtils.network // regtest network params
 
 const keyPair = bitcoin.ECPair.makeRandom({ network })
 const p2pkh = bitcoin.payments.p2pkh({ pubkey: keyPair.publicKey, network })
 
-(async () => {
+;(async () => {
     // Tell the server to send you coins (satoshis)
     // Can pass address
     const unspent = await regtestUtils.faucet(p2pkh.address, 2e4)
