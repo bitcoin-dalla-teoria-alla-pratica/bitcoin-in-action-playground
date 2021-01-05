@@ -29,7 +29,7 @@ services:
       - ./btc-node-3:/root/.bitcoin
       - ./btc-node-entrypoint.sh:/opt/entrypoint.sh
       - ./shared:/opt/shared
-      - ./btc-node3-oracle:/opt/oracle
+      - ./btc-node-3-oracle:/opt/oracle
     entrypoint: /opt/entrypoint.sh
     links:
       - btc-node2
