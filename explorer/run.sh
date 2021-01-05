@@ -34,12 +34,15 @@ elif [ "$DAEMON-$NETWORK" == "liquid-regtest" ]; then
   DAEMON_DIR="$DAEMON_DIR/liquidregtest"
 fi
 
-
-mkdir -p /etc/service/tor/log
-mkdir -p /data/logs/tor
-cp /srv/explorer/source/contrib/runits/tor.runit /etc/service/tor/run
-cp /srv/explorer/source/contrib/runits/tor-log.runit /etc/service/tor/log/run
-cp /srv/explorer/source/contrib/runits/tor-log-config.runit /data/logs/tor/config
+if [ -z "$DISABLE_TOR" ]; then
+    mkdir -p /etc/service/tor/log
+    mkdir -p /data/logs/tor
+    cp /srv/explorer/source/contrib/runits/tor.runit /etc/service/tor/run
+    cp /srv/explorer/source/contrib/runits/tor-log.runit /etc/service/tor/log/run
+    cp /srv/explorer/source/contrib/runits/tor-log-config.runit /data/logs/tor/config
+else
+    echo "==================> TOR IS DISABLED <=================="
+fi
 
 mkdir -p /etc/service/socat
 cp /srv/explorer/source/contrib/runits/socat.runit /etc/service/socat/run
@@ -243,9 +246,13 @@ if [ "${NETWORK}" == "regtest" ]; then
     else
         /srv/explorer/$DAEMON/bin/${DAEMON}d -conf=/data/.$DAEMON.conf -datadir=/data/$DAEMON -daemon
     fi
-    address=$(cli -rpcwait getnewaddress)
-    cli generatetoaddress 100 ${address}
-    cli stop
+    if [ -z "$DISABLE_GENERATETOADDRESS" ]; then
+        address=$(cli -rpcwait getnewaddress)
+        cli generatetoaddress 100 ${address}
+        cli stop
+    else
+        echo "==================> GENERATETOADDRESS IS DISABLED <=================="
+    fi
 fi
 
 # Sync mempool contents from SYNC_SOURCE

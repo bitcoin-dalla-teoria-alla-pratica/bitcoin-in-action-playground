@@ -35,11 +35,15 @@ services:
       - btc-node2
   explorer:
     image: blockstream/esplora
+    environment:
+      - DISABLE_TOR=1
+      - DISABLE_GENERATETOADDRESS=1
     ports:
       - 50001:50001
       - 8094:80
     volumes:
       - ./explorer:/data
+      - ./explorer/run.sh:/srv/explorer/run.sh # patch to disable tor and auto mining of 100 blocks...
     command: ['/srv/explorer/run.sh', 'bitcoin-regtest', 'explorer']
     links:
       - btc-node3
