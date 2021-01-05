@@ -15,5 +15,9 @@
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
+  },
+  "dependencies": {
+    "bitcoinjs-lib": "^5.2.0",
+    "regtest-client": "^0.2.0"
   }
 }
