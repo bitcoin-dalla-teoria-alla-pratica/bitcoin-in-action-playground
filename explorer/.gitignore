@@ -1,1 +1,3 @@
 bitcoin/regtest
+electrs_bitcoin_db
+logs
