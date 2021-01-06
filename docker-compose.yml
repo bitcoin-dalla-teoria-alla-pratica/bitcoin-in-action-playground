@@ -10,8 +10,6 @@ services:
       - ./btc-node-entrypoint.sh:/opt/entrypoint.sh
       - ./shared:/opt/shared
     entrypoint: /opt/entrypoint.sh
-    ports:
-      - 18443:18443
   gretel-btc:
     image: debian
     volumes:
