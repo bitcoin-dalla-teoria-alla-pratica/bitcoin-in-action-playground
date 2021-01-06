@@ -12,7 +12,7 @@ E' possibile farlo da [qui](https://github.com/bitcoin-dalla-teoria-alla-pratica
 
 # Il Bizantino e' anche su Twitter
 
-![https://twitter.com/satoshiwantsyou](https://i.ibb.co/cvzsXPk/bizantino-twitter.png)
+[![bizantino-twitter][https://i.ibb.co/cvzsXPk/bizantino-twitter.png]][hyperlink]
 
 
 
