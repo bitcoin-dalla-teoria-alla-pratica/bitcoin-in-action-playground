@@ -21,6 +21,10 @@ Roll Your Own Network
 This guide helps in setting up contemporary digital devices in a way that independence and privacy is maintened.
 https://roll.urown.net/
 
+Cloudflare Roughtime
+https://www.cloudflare.com/it-it/time/
+Our service can be reached at roughtime.cloudflare.com:2002.
+
 =======================
 ORIGINS - Italian style
 https://github.com/provable-things/oraclize-lib/blob/master/examples/weatherInMilan.js
