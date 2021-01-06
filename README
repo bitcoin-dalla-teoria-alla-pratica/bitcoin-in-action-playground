@@ -10,7 +10,16 @@ KB
 Exploring Bitcoin: Signature Hash Types
 https://medium.com/@bitaps.com/exploring-bitcoin-signature-hash-types-15427766f0a9
 
+Bitcoin core Unauthenticated REST Interface
+The interface runs on the same port as the JSON-RPC interface, by default
+- port 8332 for mainnet
+- port 18332 for testnet
+- port 18443 for regtest
+https://github.com/bitcoin/bitcoin/blob/master/doc/REST-interface.md
 
+Roll Your Own Network
+This guide helps in setting up contemporary digital devices in a way that independence and privacy is maintened.
+https://roll.urown.net/
 
 =======================
 ORIGINS - Italian style
