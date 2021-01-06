@@ -1,9 +1,3 @@
-BIT PoliTO
-In questa demo andremo a creare una transazione con script custom
-che permetta alle parti di contattare un oracolo per sbloccare i fondi.
-
-
-
 =======================
 KB
 
