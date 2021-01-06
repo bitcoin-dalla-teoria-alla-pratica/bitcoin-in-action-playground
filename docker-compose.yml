@@ -4,8 +4,8 @@ services:
   hansel-btc:
     image: debian
     volumes:
-      - ../bitcoin-0.20.1/bin/bitcoin-cli:/usr/bin/bitcoin-cli
-      - ../bitcoin-0.20.1/bin/bitcoind:/usr/bin/bitcoind
+      - ./bitcoin-core/bin/bitcoin-cli:/usr/bin/bitcoin-cli
+      - ./bitcoin-core/bin/bitcoind:/usr/bin/bitcoind
       - ./hansel-btc:/root/.bitcoin
       - ./btc-node-entrypoint.sh:/opt/entrypoint.sh
       - ./shared:/opt/shared
@@ -13,8 +13,8 @@ services:
   gretel-btc:
     image: debian
     volumes:
-      - ../bitcoin-0.20.1/bin/bitcoin-cli:/usr/bin/bitcoin-cli
-      - ../bitcoin-0.20.1/bin/bitcoind:/usr/bin/bitcoind
+      - ./bitcoin-core/bin/bitcoin-cli:/usr/bin/bitcoin-cli
+      - ./bitcoin-core/bin/bitcoind:/usr/bin/bitcoind
       - ./gretel-btc:/root/.bitcoin
       - ./btc-node-entrypoint.sh:/opt/entrypoint.sh
       - ./shared:/opt/shared
