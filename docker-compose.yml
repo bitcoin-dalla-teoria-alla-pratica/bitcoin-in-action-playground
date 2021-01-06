@@ -28,6 +28,7 @@ services:
     entrypoint: /opt/oracle/entrypoint.sh
     links:
       - bitcoinjs-regtest-server
+      - gretel-btc
   explorer:
     image: blockstream/esplora
     environment:
