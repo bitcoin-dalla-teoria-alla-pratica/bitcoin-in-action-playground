@@ -40,13 +40,13 @@ printf  "\n \e[31m######### Add ScriptSig #########\e[39m \n"
 TX_1=`printf $TX_DATA | cut -c 1-82`
 
 REDEEM_SCRIPT=`cat redeem_script.txt`
-REDEEM_SCRIPT_LENGTH=$(sh char2hex.sh $(printf $REDEEM_SCRIPT | wc -c)) #22
+REDEEM_SCRIPT_LENGTH=$(char2hex.sh $(printf $REDEEM_SCRIPT | wc -c)) #22
 
 PASS_SHA=$(printf $1 | openssl dgst -sha256 | awk '{print $2}')
-LENGTH_PASS=$(sh char2hex.sh $(printf $PASS_SHA | wc -c)) #20
+LENGTH_PASS=$(char2hex.sh $(printf $PASS_SHA | wc -c)) #20
 
 SCRIPTSIG=$LENGTH_PASS$PASS_SHA$REDEEM_SCRIPT_LENGTH$REDEEM_SCRIPT
-SCRIPTSIG_LENGTH=$(sh char2hex.sh $(printf $SCRIPTSIG | wc -c)) #22
+SCRIPTSIG_LENGTH=$(char2hex.sh $(printf $SCRIPTSIG | wc -c)) #22
 #TX_SCRIPTSIG=44202c0a7a036ee138fe1e207676c436f6048703076cc6b8525a0ee3b84638976f0f22202c0a7a036ee138fe1e207676c436f6048703076cc6b8525a0ee3b84638976f0f87
 TX_SCRIPTSIG=$SCRIPTSIG_LENGTH$SCRIPTSIG
 

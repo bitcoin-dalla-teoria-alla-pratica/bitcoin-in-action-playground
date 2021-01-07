@@ -72,7 +72,7 @@ do
   PASSWORD='barno'
   # barno = 2c0a7a036ee138fe1e207676c436f6048703076cc6b8525a0ee3b84638976f0f
   PASS_SHA=$(printf $PASSWORD | openssl dgst -sha256 | awk '{print $2}')
-  LENGTH_PASS=$(sh char2hex.sh $(printf $PASS_SHA | wc -c)) #20
+  LENGTH_PASS=$(char2hex.sh $(printf $PASS_SHA | wc -c)) #20
   OP_EQUAL=87
 
   #202c0a7a036ee138fe1e207676c436f6048703076cc6b8525a0ee3b84638976f0f87
