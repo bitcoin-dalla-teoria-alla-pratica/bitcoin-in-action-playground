@@ -5,4 +5,4 @@ NBB: si sconsiglia di utilizzare in mainnet questo approccio!
 
 Per utilizzare lo script
 
-sh main.sh {password}
+./main.sh {password}
