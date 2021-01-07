@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 sh create_p2sh_address_no_signature.sh
 
