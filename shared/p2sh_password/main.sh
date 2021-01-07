@@ -23,6 +23,7 @@ bitcoin-cli decoderawtransaction $TX_DATA | jq
 printf  "\n \e[31m######### Send transaction and mint 6 blocks #########\e[0m \n"
 TX_DATA_SIGNED=$(bitcoin-cli signrawtransactionwithkey $TX_DATA '["'$PK'"]' | jq -r '.hex')
 TXID=`bitcoin-cli sendrawtransaction $TX_DATA_SIGNED`
+echo "TXID signed and sent $TXID"
 bitcoin-cli generatetoaddress 6 $ADDR_MITT
 
 printf  "\n \e[31m######### spend from P2SH #########\e[39m \n"
