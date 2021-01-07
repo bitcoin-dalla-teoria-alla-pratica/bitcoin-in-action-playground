@@ -20,7 +20,7 @@ else
         xxd
     # btcdeb setup
     cd /opt
-    git clone git@github.com:bitcoin-core/btcdeb.git
+    git clone https://github.com/bitcoin-core/btcdeb.git
     cd btcdeb
     chmod +x ./autogen.sh
     ./autogen.sh
