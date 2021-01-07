@@ -8,10 +8,8 @@ else
     apt-get update
     apt-get install -y \
         autoconf \
-        awk \
         base58 \
         bc \
-        cut \
         git \
         jq \
         libssl-dev \
