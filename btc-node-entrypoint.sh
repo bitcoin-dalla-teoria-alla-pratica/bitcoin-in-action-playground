@@ -21,7 +21,9 @@ else
         pkg-config \
         sed \
         xxd \
-        wget
+        wget \
+	vim \
+	procps
     pip install base58
     # btcdeb setup
     if ! command -v btcdeb &> /dev/null
