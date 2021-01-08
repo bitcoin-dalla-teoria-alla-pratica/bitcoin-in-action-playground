@@ -7,29 +7,14 @@ ADDR_MITT=`bitcoin-cli getnewaddress "mittente" "legacy"`
 #Get P2SH address
 ADDR_DEST=`cat address_P2SH.txt`
 
+bitcoin-cli importaddress $ADDR_DEST
 #Mint 101 blocks and get reward to spend
-bitcoin-cli generatetoaddress 101 $ADDR_MITT >> /dev/null
-TXID=$(bitcoin-cli listunspent 1 101 '["'$ADDR_MITT'"]' | jq -r '.[0].txid')
-VOUT=$(bitcoin-cli listunspent 1 101 '["'$ADDR_MITT'"]' | jq -r '.[0].vout')
-AMOUNT=$(bitcoin-cli listunspent 1 101 '["'$ADDR_MITT'"]' | jq -r '.[0].amount-0.001')
-
-#Get sender's PK
-PK=`bitcoin-cli dumpprivkey $ADDR_MITT`
-
-printf  "\n \e[31m######### TX_DATA #########\e[39m \n"
-TX_DATA=`bitcoin-cli createrawtransaction '[{"txid":"'$TXID'","vout":'$VOUT'}]' '[{"'$ADDR_DEST'":'$AMOUNT'}]'`
-bitcoin-cli decoderawtransaction $TX_DATA | jq
-
-printf  "\n \e[31m######### Send transaction and mint 6 blocks #########\e[0m \n"
-TX_DATA_SIGNED=$(bitcoin-cli signrawtransactionwithkey $TX_DATA '["'$PK'"]' | jq -r '.hex')
-TXID=`bitcoin-cli sendrawtransaction $TX_DATA_SIGNED`
-echo "TXID signed and sent $TXID"
-bitcoin-cli generatetoaddress 6 $ADDR_MITT
-
 printf  "\n \e[31m######### spend from P2SH #########\e[39m \n"
-AMOUNT=`bitcoin-cli getrawtransaction $TXID 2 | jq -r '.vout[0].value-0.0001'`
-VOUT=0
-REDEEM=`cat redeem_script.txt`
+bitcoin-cli generatetoaddress 101 $ADDR_DEST >> /dev/null
+TXID=$(bitcoin-cli listunspent 1 101 '["'$ADDR_DEST'"]' | jq -r '.[0].txid')
+VOUT=$(bitcoin-cli listunspent 1 101 '["'$ADDR_DEST'"]' | jq -r '.[0].vout')
+AMOUNT=$(bitcoin-cli listunspent 1 101 '["'$ADDR_DEST'"]' | jq -r '.[0].amount-0.001')
+
 TX_DATA=$(bitcoin-cli createrawtransaction '[{"txid":"'$TXID'","vout":'$VOUT'}]' '[{"'$ADDR_MITT'":'$AMOUNT'}]')
 bitcoin-cli decoderawtransaction $TX_DATA | jq
 
