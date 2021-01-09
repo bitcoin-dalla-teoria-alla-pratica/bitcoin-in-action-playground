@@ -1,10 +1,9 @@
 #!/bin/bash
 
-sh create_p2sh_address_no_signature.sh
-
 ADDR_MITT=`bitcoin-cli getnewaddress "mittente" "legacy"`
 
-#Get P2SH address
+#Get P2SH password address
+sh create_p2sh_address_no_signature.sh $1
 ADDR_DEST=`cat address_P2SH.txt`
 
 bitcoin-cli importaddress $ADDR_DEST
@@ -26,30 +25,29 @@ printf  "\n \e[31m######### Add ScriptSig #########\e[39m \n"
 TX_1=`printf $TX_DATA | cut -c 1-82`
 
 REDEEM_SCRIPT=`cat redeem_script.txt`
-REDEEM_SCRIPT_LENGTH=$(char2hex.sh $(printf $REDEEM_SCRIPT | wc -c)) #22
-
-PASS_SHA=$(printf $1 | openssl dgst -sha256 | awk '{print $2}')
-LENGTH_PASS=$(char2hex.sh $(printf $PASS_SHA | wc -c)) #20
+REDEEM_SCRIPT_LENGTH=$(char2hex.sh $(printf $REDEEM_SCRIPT | wc -c))
 
 SCRIPTSIG=$REDEEM_SCRIPT_LENGTH$REDEEM_SCRIPT
-SCRIPTSIG_LENGTH=$(char2hex.sh $(printf $SCRIPTSIG | wc -c)) #22
-#TX_SCRIPTSIG=44202c0a7a036ee138fe1e207676c436f6048703076cc6b8525a0ee3b84638976f0f22202c0a7a036ee138fe1e207676c436f6048703076cc6b8525a0ee3b84638976f0f87
+SCRIPTSIG_LENGTH=$(char2hex.sh $(printf $SCRIPTSIG | wc -c))
+
 TX_SCRIPTSIG=$SCRIPTSIG_LENGTH$SCRIPTSIG
 
+printf  "\n \e[31m######### Transaction scriptSig #########\e[39m \n"
 echo $TX_SCRIPTSIG
-echo "-----"
 
-#Until the end
 TX_2=$(printf $TX_DATA | cut -c 85-)
 
-echo $TX_1$TX_SCRIPTSIG$TX_2
+TX_RAW=$TX_1$TX_SCRIPTSIG$TX_2
+
+printf  "\n \e[31m######### Transaction RAW #########\e[39m \n"
+echo $TX_RAW
 
 printf  "\n \e[31m######### Send transaction #########\e[0m\n\n"
-TX_DATA=$(bitcoin-cli sendrawtransaction $TX_1$TX_SCRIPTSIG$TX_2)
+TX_DATA=$(bitcoin-cli sendrawtransaction $TX_RAW)
 
 if [[ -n $2 ]] ; then
-  btcdeb --tx=$(printf $TX_1$TX_SCRIPTSIG$TX_2) --txin=$(bitcoin-cli getrawtransaction $TXID)
+  btcdeb --tx=$(printf $TX_RAW) --txin=$(bitcoin-cli getrawtransaction $TXID)
 fi
 
-printf  "\n \e[31m######### Mint 6 blocks #########\e[0m\n\n"
-bitcoin-cli generatetoaddress 6 $ADDR_MITT
+printf  "\n \e[31m######### Mint 1 blocks #########\e[0m\n\n"
+bitcoin-cli generatetoaddress 1 $ADDR_MITT
