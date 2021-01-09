@@ -5,25 +5,29 @@ set -e
 if [ -n "$1" ]; then
     exec "$@"
 else
-    apt-get update
-    apt-get install -y \
-        autoconf \
-        build-essential \
-        bc \
-        git \
-        jq \
-        libssl-dev \
-        libtool \
-        net-tools \
-        openssl \
-        python-pip \
-        pkg-config \
-        sed \
-        xxd \
-        wget \
-	    vim \
-	    procps
-    pip install base58
+    if ! command -v base58 &> /dev/null
+    then
+        apt-get update
+        apt-get install -y \
+            autoconf \
+            build-essential \
+            bc \
+            git \
+            jq \
+            libssl-dev \
+            libtool \
+            net-tools \
+            openssl \
+            python-pip \
+            pkg-config \
+            sed \
+            xxd \
+            wget \
+            vim \
+            procps
+        pip install base58
+    fi
+    
     # btcdeb setup
     if ! command -v btcdeb &> /dev/null
     then
