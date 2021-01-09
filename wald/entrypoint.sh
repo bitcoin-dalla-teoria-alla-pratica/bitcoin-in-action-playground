@@ -3,7 +3,6 @@
 set -e
 
 if [ -n "$1" ]; then
-    cd /opt/wald
     exec "$@"
 else
     apt-get update
