@@ -2,8 +2,8 @@
 
 set -e
 
-
 if [ -n "$1" ]; then
+    cd /opt/wald
     exec "$@"
 else
     apt-get update
@@ -22,8 +22,8 @@ else
         sed \
         xxd \
         wget \
-	vim \
-	procps
+	    vim \
+	    procps
     pip install base58
     # btcdeb setup
     if ! command -v btcdeb &> /dev/null

@@ -3,7 +3,7 @@
 ############# COSTRUZIONE P2SH
 
 # Creiamo l'address P2SH
-sh create_p2sh_address_no_signature.sh $1
+./create_p2sh_address_no_signature.sh $1
 ADDR_P2SH=`cat address_P2SH.txt`
 
 
