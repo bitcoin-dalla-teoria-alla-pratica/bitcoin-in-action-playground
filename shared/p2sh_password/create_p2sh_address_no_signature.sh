@@ -1,29 +1,26 @@
 #!/bin/sh
 
-#printf  "\n\e[42m ######### P2SH #########\e[49m\n\n"
-
 PASSWORD=$1
-# barno = 2c0a7a036ee138fe1e207676c436f6048703076cc6b8525a0ee3b84638976f0f
 PASS_SHA=$(printf $PASSWORD | openssl dgst -sha256 | awk '{print $2}')
-LENGTH_PASS=$(char2hex.sh $(printf $PASS_SHA | wc -c)) #20
+# Calcoliamo la lunghezza in byte della password
+LENGTH_PASS=$(char2hex.sh $(printf $PASS_SHA | wc -c))
 OP_EQUAL=87
 
-#202c0a7a036ee138fe1e207676c436f6048703076cc6b8525a0ee3b84638976f0f87
 SCRIPT=$LENGTH_PASS$PASS_SHA$LENGTH_PASS$PASS_SHA$OP_EQUAL
 
-printf $SCRIPT > redeem_script.txt
-printf "\e[46m ---------- Redeem Script --------- \e[49m\n"
-cat redeem_script.txt
+# Salviamo su file per usarlo in main.sh
+printf $SCRIPT > script.txt
+printf "\e[46m ---------- Bitcoin script in versione esadecimale --------- \e[49m\n"
+cat script.txt
 
-#printf "\n \n\e[46m ---------- scriptPubKey --------- \e[49m\n"
-ADDR_SHA=`printf $SCRIPT | xxd -r -p | openssl sha256| sed 's/^.* //'`
-ADDR_RIPEMD160=`printf $ADDR_SHA |xxd -r -p | openssl ripemd160 | sed 's/^.* //'`
-printf $ADDR_RIPEMD160 > scriptPubKey.txt
-#cat scriptPubKey.txt
+# Calcoliamo il RIPEMD-160
+SCRIPT_SHA=`printf $SCRIPT | xxd -r -p | openssl sha256| sed 's/^.* //'`
+SCRIPT_RIPEMD160=`printf $SCRIPT_SHA |xxd -r -p | openssl ripemd160 | sed 's/^.* //'`
 
-#ADDRESS
+# Calcoliamo l'address P2SH
 VERSION_PREFIX_ADDRESS=C4
 printf "\n \n\e[46m ---------- 🔑 ADDRESS P2SH --------- \e[49m\n"
-ADDR=`printf $VERSION_PREFIX_ADDRESS$ADDR_RIPEMD160 | xxd -p -r | base58 -c`
-echo $ADDR > address_P2SH.txt
-echo $ADDR
+PS2H_ADDR=`printf $VERSION_PREFIX_ADDRESS$SCRIPT_RIPEMD160 | xxd -p -r | base58 -c`
+# Salviamo su file per usarlo in main.sh
+echo $PS2H_ADDR > address_P2SH.txt
+echo $PS2H_ADDR
