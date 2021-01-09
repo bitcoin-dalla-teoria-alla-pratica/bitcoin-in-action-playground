@@ -2,6 +2,13 @@
 
 set -e
 
+function on_sig_term() {
+    echo "====> $(date) RICEVUTO SIGTERM <===="
+    bitcoin-cli stop
+}
+
+trap on_sig_term SIGTERM
+
 if [ -n "$1" ]; then
     exec "$@"
 else
