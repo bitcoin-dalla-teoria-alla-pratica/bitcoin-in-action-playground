@@ -44,8 +44,8 @@ services:
       - 50001:50001
       - 8094:80
     volumes:
-      - ./explorer:/data
-      - ./explorer/run.sh:/srv/explorer/run.sh # patch to disable Tor and auto mining of 100 blocks...
+      - ./blockchain-explorer:/data
+      - ./blockchain-explorer/run.sh:/srv/explorer/run.sh # patch to disable Tor and auto mining of 100 blocks...
     command: ['/srv/explorer/run.sh', 'bitcoin-regtest', 'explorer']
     links:
       - gretel
