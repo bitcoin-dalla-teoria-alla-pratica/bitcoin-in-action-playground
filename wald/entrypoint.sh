@@ -8,7 +8,6 @@ function on_sig_term() {
 
 trap on_sig_term SIGTERM
 
-
 if ! command -v base58 &> /dev/null
 then
     apt-get update
@@ -16,7 +15,9 @@ then
         autoconf \
         build-essential \
         bc \
+        curl \
         git \
+        wget \
         jq \
         libssl-dev \
         libtool \
@@ -24,11 +25,10 @@ then
         openssl \
         python-pip \
         pkg-config \
+        procps \
         sed \
-        xxd \
-        wget \
         vim \
-        procps
+        xxd
     pip install base58
 fi
 
@@ -53,6 +53,7 @@ chmod +x /usr/bin/bitcoind
 # bizantino utility
 if ! command -v hello.sh &> /dev/null
 then
+    # for docker exec PATH
     rm -Rf /usr/local/sbin
     ln -s /opt/wald/utility /usr/local/sbin
 fi
