@@ -1,17 +1,8 @@
 #!/bin/sh
-if [ "$1" = 'MAINNET' ]
-then
-    VERSION_PREFIX_PB=80
-    VERSION_PREFIX_ADDRESS=05
-else
-    # regtest
-    VERSION_PREFIX_PB=EF
-    VERSION_PREFIX_ADDRESS=C4
-fi
 
   printf  "\n\e[42m ######### P2SH #########\e[49m\n\n"
 
-  PASSWORD='barno'
+  PASSWORD=$1
   # barno = 2c0a7a036ee138fe1e207676c436f6048703076cc6b8525a0ee3b84638976f0f
   PASS_SHA=$(printf $PASSWORD | openssl dgst -sha256 | awk '{print $2}')
   LENGTH_PASS=$(char2hex.sh $(printf $PASS_SHA | wc -c)) #20
@@ -31,6 +22,7 @@ fi
   cat scriptPubKey.txt
 
   #ADDRESS
+  VERSION_PREFIX_ADDRESS=C4
   printf "\n \n\e[46m ---------- 🔑 ADDRESS P2SH --------- \e[49m\n"
   ADDR=`printf $VERSION_PREFIX_ADDRESS$ADDR_RIPEMD160 | xxd -p -r | base58 -c`
   echo $ADDR > address_P2SH.txt
