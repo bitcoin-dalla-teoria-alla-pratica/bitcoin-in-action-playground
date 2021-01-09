@@ -1,6 +1,6 @@
 #!/bin/bash
 
-############# INIZIO COSTRUZIONE P2SH
+############# COSTRUZIONE P2SH
 
 # Creiamo l'address P2SH
 sh create_p2sh_address_no_signature.sh $1
@@ -8,7 +8,7 @@ ADDR_P2SH=`cat address_P2SH.txt`
 
 
 
-############# INIZIO COSTRUZIONE UTXO P2SH
+############# COSTRUZIONE UTXO P2SH
 
 # Importiamo l'address P2SH nel wallet
 bitcoin-cli importaddress $ADDR_P2SH
@@ -29,7 +29,7 @@ echo "http://localhost:8094/regtest/tx/$TXID"
 
 
 
-############# INIZIO COSTRUZIONE TX CHE RISCATTA UTXO P2SH
+############# COSTRUZIONE TX CHE RISCATTA UTXO P2SH
 
 # Generiamo un indirizzo standard
 ADDR_DEST=`bitcoin-cli getnewaddress "destinatario" "legacy"`
