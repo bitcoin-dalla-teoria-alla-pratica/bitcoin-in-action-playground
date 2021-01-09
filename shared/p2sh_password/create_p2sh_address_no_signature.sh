@@ -18,7 +18,7 @@ fi
   OP_EQUAL=87
 
   #202c0a7a036ee138fe1e207676c436f6048703076cc6b8525a0ee3b84638976f0f87
-  SCRIPT=$LENGTH_PASS$PASS_SHA$OP_EQUAL
+  SCRIPT=$LENGTH_PASS$PASS_SHA$LENGTH_PASS$PASS_SHA$OP_EQUAL
 
   printf $SCRIPT > redeem_script.txt
   printf "\e[46m ---------- Redeem Script --------- \e[49m\n"
