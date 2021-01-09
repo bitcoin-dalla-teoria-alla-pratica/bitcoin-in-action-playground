@@ -3,7 +3,6 @@
 set -e
 
 function on_sig_term() {
-    echo "====> $(date) RICEVUTO SIGTERM <===="
     bitcoin-cli stop
 }
 
