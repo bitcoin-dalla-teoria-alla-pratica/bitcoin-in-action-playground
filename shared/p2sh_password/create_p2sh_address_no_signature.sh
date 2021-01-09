@@ -19,7 +19,7 @@ SCRIPT_RIPEMD160=`printf $SCRIPT_SHA |xxd -r -p | openssl ripemd160 | sed 's/^.*
 
 # Calcoliamo l'address P2SH
 VERSION_PREFIX_ADDRESS=C4
-printf "\n \n\e[46m ---------- 🔑 ADDRESS P2SH --------- \e[49m\n"
+printf "\n \n\e[46m ---------- ADDRESS P2SH --------- \e[49m\n"
 PS2H_ADDR=`printf $VERSION_PREFIX_ADDRESS$SCRIPT_RIPEMD160 | xxd -p -r | base58 -c`
 # Salviamo su file per usarlo in main.sh
 echo $PS2H_ADDR > address_P2SH.txt
