@@ -1,3 +1,8 @@
 #!/bin/bash
 
-./bitcoin-core/bin/bitcoin-cli -datadir=hansel $@
+if ! command -v bitcoin-cli &> /dev/null
+then
+    ./bitcoin-core/bin/bitcoin-cli -datadir=hansel $@
+else
+    bitcoin-cli -datadir=hansel $@
+fi
