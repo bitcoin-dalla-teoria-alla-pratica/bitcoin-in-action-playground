@@ -27,7 +27,7 @@ else
             procps
         pip install base58
     fi
-    
+
     # btcdeb setup
     if ! command -v btcdeb &> /dev/null
     then
@@ -49,7 +49,7 @@ else
     # bizantino utility
     if ! command -v hello.sh &> /dev/null
     then
-	echo 'export PATH=$PATH:/opt/shared/utility' >> /root/.bashrc
+	echo 'export PATH=$PATH:/opt/wald/utility' >> /root/.bashrc
     fi
 
     # foreground bitcoin daemon
