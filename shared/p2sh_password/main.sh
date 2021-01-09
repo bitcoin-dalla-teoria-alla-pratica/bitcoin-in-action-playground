@@ -72,7 +72,7 @@ TX_RAW=$TX_1$TX_SCRIPTSIG$TX_2
 # Inviamo TX_RAW alla rete P2P
 TX_DATA=$(bitcoin-cli sendrawtransaction $TX_RAW)
 printf  "\n \e[31m######### USA PASSWORD PER RISCATTARE SALDO P2SH #########\e[0m\n\n"
-echo "http://localhost:8094/regtest/tx/$TX_DATA"
+echo "http://localhost:8094/regtest/tx/$TX_DATA\n\n"
 
 # Se viene passato il secondo parametro "debug" a questro script si attiva btcdeb
 if [[ -n $2 ]] ; then
