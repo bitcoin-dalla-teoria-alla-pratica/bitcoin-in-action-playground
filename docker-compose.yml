@@ -31,7 +31,7 @@ services:
     image: node
     volumes:
       - ./oz:/opt/emerald-city
-    entrypoint: /opt/emerald-city/entrypoint.sh
+    entrypoint: ["/opt/emerald-city/entrypoint.sh"]
     working_dir: /opt/emerald-city
     links:
       - bitcoinjs-regtest-server
