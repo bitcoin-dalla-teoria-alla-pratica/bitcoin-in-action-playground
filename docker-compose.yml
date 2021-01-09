@@ -12,6 +12,8 @@ services:
       - ./wald:/opt/wald
     entrypoint: /opt/wald/entrypoint.sh
     working_dir: /opt/wald
+    ports:
+      - 18443:18443
   gretel:
     container_name: gretel
     hostname: gretel
