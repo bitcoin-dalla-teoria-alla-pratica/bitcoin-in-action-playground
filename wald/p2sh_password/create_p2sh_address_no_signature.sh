@@ -1,12 +1,14 @@
 #!/bin/sh
 
-PASSWORD=$1
-PASS_SHA=$(printf $PASSWORD | openssl dgst -sha256 | awk '{print $2}')
-# Calcoliamo la lunghezza in byte della password
-LENGTH_PASS=$(char2hex.sh $(printf $PASS_SHA | wc -c))
-OP_EQUAL=87
+printf  "\n\e[42m ######### P2SH #########\e[49m\n\n"
 
-SCRIPT=$LENGTH_PASS$PASS_SHA$LENGTH_PASS$PASS_SHA$OP_EQUAL
+PASSWORD=$1
+PASS_SHA=$(printf $1 | xxd -r -p | sha256sum -b | xxd -r -p | sha256sum -b | awk '{print $1}')
+
+LENGTH_PASS=$(char2hex.sh $(printf $PASS_SHA | wc -c)) #20
+OP_EQUAL=87
+OP_SHA=A8
+SCRIPT=$OP_SHA$LENGTH_PASS$PASS_SHA$OP_EQUAL
 
 # Salviamo su file per usarlo in main.sh
 printf $SCRIPT > script.txt

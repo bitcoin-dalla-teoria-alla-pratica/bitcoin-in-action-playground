@@ -2,11 +2,7 @@
 
 ############# COSTRUZIONE P2SH
 
-# Creiamo l'address P2SH
-./create_p2sh_address_no_signature.sh $1
 ADDR_P2SH=`cat address_P2SH.txt`
-
-
 
 ############# COSTRUZIONE UTXO P2SH
 
@@ -52,7 +48,9 @@ SCRIPT_LENGTH=$(char2hex.sh $(printf $SCRIPT | wc -c))
 # che non erano noti al momento della creazione dell'address P2SH
 # tali parametri vengono usati per aumentare la programmabilita' delle logiche di riscatto
 # per lo scopo di questo esempio contiene solo il sorgente esadecimale dello script
-SCRIPTSIG=$SCRIPT_LENGTH$SCRIPT
+PASS_SHA=$(printf $1 | xxd -r -p | sha256sum -b  | awk '{print $1}')
+LENGTH_PASS=$(char2hex.sh $(printf $PASS_SHA | wc -c)) #20
+SCRIPTSIG=$LENGTH_PASS$PASS_SHA$SCRIPT_LENGTH$SCRIPT
 SCRIPTSIG_LENGTH=$(char2hex.sh $(printf $SCRIPTSIG | wc -c))
 TX_SCRIPTSIG=$SCRIPTSIG_LENGTH$SCRIPTSIG
 
