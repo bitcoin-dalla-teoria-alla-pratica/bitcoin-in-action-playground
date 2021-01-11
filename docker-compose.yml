@@ -65,4 +65,17 @@ services:
     volumes:
       - ./bitcoinjs-regtest-server/bitcoin-data:/root/.bitcoin
       - ./bitcoinjs-regtest-server/run_bitcoind_service.sh:/root/run_bitcoind_service.sh # patch to disable mining of 432 blocks...
-    
+  blockchain-reader:
+    container_name: blockchain-reader
+    hostname: blockchain-reader
+    image: tomcat
+    ports:
+      - 8888:8080 # Tomcat manager w/ user "tomcat" and pwd "tomcat" http://localhost:8888/manager/html
+    links:
+      - hansel
+    command: ["/opt/entrypoint.sh"]
+    volumes:
+      - ./blockchain-reader/tomcat/conf/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
+      - ./blockchain-reader/tomcat/manager:/opt/manager
+      - ./blockchain-reader/entrypoint.sh:/opt/entrypoint.sh
+      - ./blockchain-reader/yoghurt.conf:/opt/yoghurt.conf
