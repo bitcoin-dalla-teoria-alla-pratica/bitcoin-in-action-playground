@@ -71,11 +71,8 @@ services:
     image: tomcat
     ports:
       - 8888:8080 # Tomcat manager w/ user "tomcat" and pwd "tomcat" http://localhost:8888/manager/html
-    links:
-      - hansel
     command: ["/opt/entrypoint.sh"]
     volumes:
-      - ./blockchain-reader/tomcat/conf/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
-      - ./blockchain-reader/tomcat/manager:/opt/manager
+      - ./blockchain-reader/tomcat/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
+      - ./blockchain-reader/tomcat/manager-webapp-context.xml:/opt/manager-webapp-context.xml
       - ./blockchain-reader/entrypoint.sh:/opt/entrypoint.sh
-      - ./blockchain-reader/yoghurt.conf:/opt/yoghurt.conf
