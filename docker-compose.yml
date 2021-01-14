@@ -14,6 +14,7 @@ services:
     working_dir: /opt/wald
     ports:
       - 18443:18443
+      - 18444:18444
   gretel:
     container_name: gretel
     hostname: gretel
