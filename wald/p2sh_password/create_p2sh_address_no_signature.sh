@@ -2,8 +2,19 @@
 
 printf  "\n\e[42m ######### P2SH #########\e[49m\n\n"
 
+
+if [ -z "$1" ]; then
+echo "inserisci la password per generare il tuo Redeem Script!"
+exit
+fi
+
 PASSWORD=$1
 PASS_SHA=$(printf $1 | xxd -r -p | sha256sum -b | xxd -r -p | sha256sum -b | awk '{print $1}')
+
+
+#PASS_SHA=$(printf $1 | sha256sum -b | sha256sum -b | awk '{print $1)'
+#PASS_SHA=$(printf $1 | xxd -r -p | sha256sum -b | xxd -r -p | sha256sum -b | awk '{print $1})'
+
 
 LENGTH_PASS=$(char2hex.sh $(printf $PASS_SHA | wc -c)) #20
 OP_EQUAL=87

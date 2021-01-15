@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ -z "$1" ]; then
+echo "inserisci la password per sbloccare la transazione!"
+exit
+fi
+
 ############# COSTRUZIONE P2SH
 
 ADDR_P2SH=`cat address_P2SH.txt`
@@ -48,7 +53,7 @@ SCRIPT_LENGTH=$(char2hex.sh $(printf $SCRIPT | wc -c))
 # che non erano noti al momento della creazione dell'address P2SH
 # tali parametri vengono usati per aumentare la programmabilita' delle logiche di riscatto
 # per lo scopo di questo esempio contiene solo il sorgente esadecimale dello script
-PASS_SHA=$(printf $1 | xxd -r -p | sha256sum -b  | awk '{print $1}')
+PASS_SHA=$(printf $1 | xxd -r -p | sha256sum | awk '{print $1}')
 LENGTH_PASS=$(char2hex.sh $(printf $PASS_SHA | wc -c)) #20
 SCRIPTSIG=$LENGTH_PASS$PASS_SHA$SCRIPT_LENGTH$SCRIPT
 SCRIPTSIG_LENGTH=$(char2hex.sh $(printf $SCRIPTSIG | wc -c))
