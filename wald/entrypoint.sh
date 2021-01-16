@@ -58,13 +58,5 @@ then
     ln -s /opt/wald/utility /usr/local/sbin
 fi
 
-#aggiunge le righe e la sintassi a vim
-cat << EOF > ~/.vimrc 
-set nu
-syntax on
-colorscheme pablo
-EOF
-
-
 # foreground bitcoin daemon
 bitcoind

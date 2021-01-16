@@ -10,6 +10,7 @@ services:
       - ./bitcoin-core/bin/bitcoind:/usr/bin/bitcoind
       - ./hansel:/root/.bitcoin
       - ./wald:/opt/wald
+      - ./wald/vim/.vimrc:/root/.vimrc
     entrypoint: /opt/wald/entrypoint.sh
     working_dir: /opt/wald
     ports:
@@ -24,6 +25,7 @@ services:
       - ./bitcoin-core/bin/bitcoind:/usr/bin/bitcoind
       - ./gretel:/root/.bitcoin
       - ./wald:/opt/wald
+      - ./wald/vim/.vimrc:/root/.vimrc
     entrypoint: /opt/wald/entrypoint.sh
     working_dir: /opt/wald
     links:
