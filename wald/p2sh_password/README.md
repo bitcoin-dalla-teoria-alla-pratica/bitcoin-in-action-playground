@@ -5,6 +5,6 @@ NBB: si sconsiglia di utilizzare in mainnet questo approccio!
 
 Per utilizzare lo script
 
-./main.sh {password}
+./main.sh {password scelta} {password tentata}
 
-Maggiorni dettagli si trovano nella guida del playground: https://playground.bitcoininaction.com/il-tuo-primo-bitcoin-script-custom
+Maggiorni dettagli si trovano nella guida del playground: https://playground.bitcoininaction.com/bitcoin-smart-contract-101
