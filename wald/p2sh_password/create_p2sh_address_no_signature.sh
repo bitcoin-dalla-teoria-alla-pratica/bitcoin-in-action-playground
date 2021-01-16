@@ -9,7 +9,7 @@ exit
 fi
 
 PASSWORD=$1
-PASS_SHA=$(printf $1 | xxd -r -p | sha256sum -b | xxd -r -p | sha256sum -b | awk '{print $1}')
+PASS_SHA=$(printf $PASSWORD | sha256sum | xxd -r -p | sha256sum -b | awk '{print $1}')
 
 
 #PASS_SHA=$(printf $1 | sha256sum -b | sha256sum -b | awk '{print $1)'
