@@ -4,9 +4,11 @@ if [ -z "$1" ]; then
 echo "inserisci la password per sbloccare la transazione!"
 exit
 fi
+PASSWORD_HANSEL=$1
+PASSWORD_GRETEL=$2
 
 ############# COSTRUZIONE P2SH
-
+./create_p2sh_address_no_signature.sh $PASSWORD_HANSEL
 ADDR_P2SH=`cat address_P2SH.txt`
 
 ############# COSTRUZIONE UTXO P2SH
@@ -53,7 +55,7 @@ SCRIPT_LENGTH=$(char2hex.sh $(printf $SCRIPT | wc -c))
 # che non erano noti al momento della creazione dell'address P2SH
 # tali parametri vengono usati per aumentare la programmabilita' delle logiche di riscatto
 # per lo scopo di questo esempio contiene solo il sorgente esadecimale dello script
-PASS_SHA=$(printf $1 | sha256sum | awk '{print $1}')
+PASS_SHA=$(printf $PASSWORD_GRETEL | sha256sum | awk '{print $1}')
 LENGTH_PASS=$(char2hex.sh $(printf $PASS_SHA | wc -c)) #20
 SCRIPTSIG=$LENGTH_PASS$PASS_SHA$SCRIPT_LENGTH$SCRIPT
 SCRIPTSIG_LENGTH=$(char2hex.sh $(printf $SCRIPTSIG | wc -c))
