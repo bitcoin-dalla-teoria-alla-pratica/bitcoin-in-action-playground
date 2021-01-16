@@ -26,8 +26,8 @@ TX_TEMPLATE=$(bitcoin-cli createrawtransaction '[{"txid":"'$TXID_WITH_MATURITY'"
 TX_1=`printf $TX_TEMPLATE | cut -c 1-82`
 
 # Costruisco lo ScriptSig
-SCRIPT_SIG_1=`btcc $REDEEM_SCRIPT_INPUT_DATA $REDEEM_SCRIPT`
-SCRIPT_SIG=`btcc $SCRIPT_SIG_1`
+SCRIPT_SIG=`btcc $REDEEM_SCRIPT_INPUT_DATA $REDEEM_SCRIPT`
+SCRIPT_SIG_SERIALIZED=`btcc $SCRIPT_SIG`
 
 # Recuperiamo l'intestazione esadecimale della transazione di output
 # che contiene BENEFICIARIO
@@ -36,6 +36,6 @@ TX_2=$(printf $TX_TEMPLATE | cut -c 85-)
 # Costruiamo l'esadecimale completo della transazione che
 # riscatta i fondi del P2SH dimostrando di conoscere lo script
 # e li invia ad BENEFICIARIO
-TX_RAW=$TX_1$SCRIPT_SIG$TX_2
+TX_RAW=$TX_1$SCRIPT_SIG_SERIALIZED$TX_2
 
 echo $TX_RAW
