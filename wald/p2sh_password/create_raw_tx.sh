@@ -33,7 +33,7 @@ SCRIPT_SIG=`btcc $REDEEM_SCRIPT_INPUT_DATA $REDEEM_SCRIPT`
 #### Costruzione della TX
 
 # Creiamo una transazione template che utilizza la UTXO P2SH e riscatta il saldo al destinatario
-TX_TEMPLATE=$(bitcoin-cli createrawtransaction '[{"txid":"'$TXID_WITH_MATURITY'","vout":'$P2SH_UTXO_INDEX'}]' '[{"'$BENEFICIARIO'":'$AMOUNT'}]')
+TX_TEMPLATE=$(bitcoin-cli createrawtransaction '[{"txid":"'$TXID_WITH_MATURITY'","vout":'$P2SH_UTXO_INDEX'}]' '[{"'$BENEFICIARIO'":'$AMOUNT'}]' 0 true)
 
 # Recuperiamo l'intestazione esadecimale della transazione di input
 # che contiene la UTXO P2SH
