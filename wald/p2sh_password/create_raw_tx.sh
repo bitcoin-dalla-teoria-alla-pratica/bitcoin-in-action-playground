@@ -15,9 +15,14 @@ P2SH_UTXO_INDEX=`echo $P2SH_UTXO | jq -r '.n'`
 # ...l'ammontare di bitcoin disponibili per la UTXO
 P2SH_UTXO_AVAILABLE_AMOUNT=`echo $P2SH_UTXO | jq -r '.value'`
 
-# Calcoliamo l'ammontare di bitcoin per il beneficiario
-# sottraendo la fee destinata al miner
-AMOUNT=`printf $P2SH_UTXO_AVAILABLE_AMOUNT | jq '. -0.001'`
+if [[ -n $5 ]] ; then
+    AMOUNT=$5
+else
+    # Se non e' stato specificato un ammontare specifico da inviare
+    # calcoliamo l'ammontare di bitcoin per il beneficiario
+    # sottraendo una fee standard per regtest destinata al miner
+    AMOUNT=`printf $P2SH_UTXO_AVAILABLE_AMOUNT | jq '. -0.001'`
+fi
 
 # Costruisco lo ScriptSig
 # In questo passaggio il REDEEM_SCRIPT viene "serializzato"
