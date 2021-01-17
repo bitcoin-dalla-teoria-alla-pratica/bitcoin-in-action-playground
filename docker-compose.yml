@@ -81,7 +81,7 @@ services:
     hostname: blockchain-reader
     image: tomcat
     ports:
-      - 8080:8080 # Tomcat manager w/ user "tomcat" and pwd "tomcat" http://localhost:8888/manager/html
+      - 8080:8080 # Tomcat manager w/ user "tomcat" and pwd "tomcat" http://localhost:8080/manager/html
     command: ["/opt/entrypoint.sh"]
     volumes:
       - ./blockchain-reader/tomcat/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
