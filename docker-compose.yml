@@ -34,6 +34,8 @@ services:
     working_dir: /opt/wald
     links:
       - hansel
+    ports:
+      - 28444:18444
   oz:
     container_name: oz
     hostname: oz
