@@ -46,6 +46,7 @@ then
     make
     make install
 fi
+
 # bitcoin core setup
 chmod +x /usr/bin/bitcoin-cli
 chmod +x /usr/bin/bitcoind
@@ -57,6 +58,18 @@ then
     rm -Rf /usr/local/sbin
     ln -s /opt/wald/utility /usr/local/sbin
 fi
+
+# libbitcoin explorer
+# https://github.com/libbitcoin/libbitcoin-explorer/wiki
+if ! command -v bx &> /dev/null
+then
+    cd /opt/wald/utility
+    wget https://github.com/libbitcoin/libbitcoin-explorer/releases/download/v3.2.0/bx-linux-x64-qrcode
+    mv bx-linux-x64-qrcode bx
+    chmod +x bx
+fi
+
+cd
 
 # foreground bitcoin daemon
 bitcoind

@@ -5,6 +5,8 @@ services:
     container_name: hansel
     hostname: hansel
     image: debian
+    environment:
+      - BX_CONFIG=/opt/wald/bx.cfg
     volumes:
       - ./bitcoin-core/bin/bitcoin-cli:/usr/bin/bitcoin-cli
       - ./bitcoin-core/bin/bitcoind:/usr/bin/bitcoind
@@ -20,6 +22,8 @@ services:
     container_name: gretel
     hostname: gretel
     image: debian
+    environment:
+      - BX_CONFIG=/opt/wald/bx.cfg
     volumes:
       - ./bitcoin-core/bin/bitcoin-cli:/usr/bin/bitcoin-cli
       - ./bitcoin-core/bin/bitcoind:/usr/bin/bitcoind
