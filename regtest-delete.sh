@@ -9,4 +9,4 @@ sudo rm -Rf blockchain-explorer/bitcoin
 sudo rm -Rf blockchain-explorer/logs
 sudo rm -Rf blockchain-explorer/electrs_bitcoin_db
 
-echo "=====> pulizia dei file completata, utilizza docker-compose up per avviare il playground <====="
+echo "=====> pulizia dei file completata, utilizza docker-compose start/up per avviare il playground <====="
