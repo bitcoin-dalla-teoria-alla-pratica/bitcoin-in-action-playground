@@ -87,3 +87,18 @@ services:
       - ./blockchain-reader/tomcat/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
       - ./blockchain-reader/tomcat/manager-webapp-context.xml:/opt/manager-webapp-context.xml
       - ./blockchain-reader/entrypoint.sh:/opt/entrypoint.sh
+  lightningd:
+    container_name: lightningd
+    hostname: lightningd
+    image: elementsproject/lightningd
+    ports:
+      - 9735:9735
+      - 9737:9737
+    volumes:
+      - ./lightningd/lightning:/root/.lightning
+      - ./lightningd/bitcoin:/root/.bitcoin
+      - ./lightningd/entrypoint.sh:/opt/entrypoint.sh
+      - ./lightningd/spark-wallet:/root/.spark-wallet
+    links:
+      - hansel
+    entrypoint: /opt/entrypoint.sh

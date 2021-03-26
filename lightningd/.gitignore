@@ -1,0 +1,4 @@
+lightning/lightningd-bitcoin.pid
+lightning/lightningd-regtest.pid
+lightning/wallet.lightningd.log
+spark-wallet/cookie
