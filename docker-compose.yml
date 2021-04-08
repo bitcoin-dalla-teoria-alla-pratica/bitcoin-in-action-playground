@@ -124,3 +124,4 @@ services:
       - 10009:10009
     links:
       - gretel
+      - lightningd
