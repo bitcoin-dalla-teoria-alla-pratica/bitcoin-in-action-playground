@@ -111,7 +111,7 @@ services:
       - ./lnd/entrypoint.sh:/opt/entrypoint.sh
     entrypoint: ["/opt/entrypoint.sh"]
     environment:
-      - NETWORK=simnet
+      - NETWORK=regtest
       - CHAIN=bitcoin
       - BACKEND=bitcoind
       - RPCUSER=gretel
