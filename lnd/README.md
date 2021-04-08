@@ -19,3 +19,5 @@ Se si vuole connettere electrum a questo nodo LN
 2. lncli -n regtest getinfo | jq '.identity_pubkey'
 3. in electrum dal tab "Channels" cliccare "Open Channel"
 4. come "Remote node ID" inserire {pubkey 2.}@127.0.0.1:19735
+
+Attualmente ln-cli non supporta config da file quindi il -n regtest va sempre specificato: https://github.com/lightningnetwork/lnd/issues/533.
