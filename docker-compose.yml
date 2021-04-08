@@ -122,6 +122,7 @@ services:
       - BACKEND_ZMQPUBRAWTX=tcp://gretel:48444
     ports:
       - 10009:10009
+      - 19735:9735
     links:
       - gretel
       - lightningd
