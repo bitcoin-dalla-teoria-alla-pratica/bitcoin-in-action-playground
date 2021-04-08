@@ -63,12 +63,18 @@ if [[ "$BACKEND" == "ltcd" || "$BACKEND" == "btcd" ]]; then
     EXTRA_LND_ARGS="--$BACKEND.rpccert"="/rpc/rpc.cert"
 fi
 
+BITCOIND_EXTRA_LND_ARGS=""
+if [[ "$BACKEND" == "bitcoind" ]]; then
+    BITCOIND_EXTRA_LND_ARGS="--$BACKEND.zmqpubrawtx=$BACKEND_ZMQPUBRAWTX --$BACKEND.zmqpubrawblock=$BACKEND_ZMQPUBRAWBLOCK"
+fi
+
 exec lnd \
     --noseedbackup \
     "--$CHAIN.active" \
     "--$CHAIN.$NETWORK" \
     "--$CHAIN.node"="$BACKEND" \
     $EXTRA_LND_ARGS \
+    $BITCOIND_EXTRA_LND_ARGS \
     "--$BACKEND.rpchost"="$BACKEND_RPC_HOST" \
     "--$BACKEND.rpcuser"="$RPCUSER" \
     "--$BACKEND.rpcpass"="$RPCPASS" \

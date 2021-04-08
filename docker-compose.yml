@@ -118,6 +118,8 @@ services:
       - RPCPASS=1337
       - HOSTNAME=0.0.0.0
       - BACKEND_RPC_HOST=gretel
+      - BACKEND_ZMQPUBRAWBLOCK=tcp://gretel:38444
+      - BACKEND_ZMQPUBRAWTX=tcp://gretel:48444
     ports:
       - 10009:10009
     links:
