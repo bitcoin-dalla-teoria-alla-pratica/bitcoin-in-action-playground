@@ -58,9 +58,9 @@ fi
 # address that is reachable on the internal network. If you do this outside of
 # docker, this might be a security concern!
 
-EXTRA_LND_ARGS = ""
+BTCD_EXTRA_LND_ARGS=""
 if [[ "$BACKEND" == "ltcd" || "$BACKEND" == "btcd" ]]; then
-    EXTRA_LND_ARGS="--$BACKEND.rpccert"="/rpc/rpc.cert"
+    BTCD_EXTRA_LND_ARGS="--$BACKEND.rpccert"="/rpc/rpc.cert"
 fi
 
 BITCOIND_EXTRA_LND_ARGS=""
@@ -73,7 +73,7 @@ exec lnd \
     "--$CHAIN.active" \
     "--$CHAIN.$NETWORK" \
     "--$CHAIN.node"="$BACKEND" \
-    $EXTRA_LND_ARGS \
+    $BTCD_EXTRA_LND_ARGS \
     $BITCOIND_EXTRA_LND_ARGS \
     "--$BACKEND.rpchost"="$BACKEND_RPC_HOST" \
     "--$BACKEND.rpcuser"="$RPCUSER" \
