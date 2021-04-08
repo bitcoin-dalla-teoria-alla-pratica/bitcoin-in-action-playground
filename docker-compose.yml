@@ -105,7 +105,7 @@ services:
   lnd:
     container_name: lnd
     hostname: lnd
-    image: lightninglabs/lnd
+    image: lightninglabs/lnd:v0.12.1-beta
     volumes:
       - ./lnd/lnd-data:/root/.lnd
       - ./lnd/entrypoint.sh:/opt/entrypoint.sh
