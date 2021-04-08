@@ -46,7 +46,8 @@ RPCPASS=$(set_default "$RPCPASS" "devpass")
 DEBUG=$(set_default "$DEBUG" "debug")
 NETWORK=$(set_default "$NETWORK" "simnet")
 CHAIN=$(set_default "$CHAIN" "bitcoin")
-BACKEND="btcd"
+BACKEND=$(set_default "$BACKEND" "btcd")
+BACKEND_RPC_HOST=$(set_default "$BACKEND_RPC_HOST" "blockchain")
 HOSTNAME=$(hostname)
 if [[ "$CHAIN" == "litecoin" ]]; then
     BACKEND="ltcd"
@@ -57,13 +58,18 @@ fi
 # address that is reachable on the internal network. If you do this outside of
 # docker, this might be a security concern!
 
+EXTRA_LND_ARGS = ""
+if [[ "$BACKEND" == "ltcd" || "$BACKEND" == "btcd" ]]; then
+    EXTRA_LND_ARGS="--$BACKEND.rpccert"="/rpc/rpc.cert"
+fi
+
 exec lnd \
     --noseedbackup \
     "--$CHAIN.active" \
     "--$CHAIN.$NETWORK" \
-    "--$CHAIN.node"="btcd" \
-    "--$BACKEND.rpccert"="/rpc/rpc.cert" \
-    "--$BACKEND.rpchost"="blockchain" \
+    "--$CHAIN.node"="$BACKEND" \
+    $EXTRA_LND_ARGS \
+    "--$BACKEND.rpchost"="$BACKEND_RPC_HOST" \
     "--$BACKEND.rpcuser"="$RPCUSER" \
     "--$BACKEND.rpcpass"="$RPCPASS" \
     "--rpclisten=$HOSTNAME:10009" \
