@@ -70,6 +70,44 @@ cd /root/bitcoin-in-action-playground/bitcoin-core
 docker-compose up
 ```
 
+### minare i primi 101 blocchi
+
+ per prima cosa entrare nel nodo hansel e poi lanciare il comando del bitcoin core
+
+```
+bitcoin-cli generatetoaddress 1 $(bitcoin-cli getnewaddress)
+```
+
+ oppure generare manualmente un nuovo address e indicare quello nel comando sopra.
+
+## Collegare bitcoincore wallet
+
+ dopo avere installato e lanciato bitcoin-qt settare quanto segue nel file di configurazione.
+
+![](https://i.ibb.co/hMTf6Mp/set-bitcoincore-wallet-config.png)
+
+```
+regtest=1
+
+[regtest]
+onlynet=ipv4
+# hansel espone la porta di protocollo bitcoin su 18444 (default)
+addnode=127.0.0.1
+# gretel espone la porta di protocollo bitcoin su 28444 (custom per non andare in conflitto con hansel)
+addnode=127.0.0.1:28444
+```
+
+ salvare e riaprire il wallet, andare in settings -> options e inserire nella sezione "third party transaction URLs" quanto segue
+
+```
+http://localhost:8094/regtest/tx/%s
+```
+
+ottenendo
+
+![](https://i.ibb.co/kmTHqb6/options-settings-bitcoincore.png)
+
+
 ## Collegare electrum
 
  L'ambiente possiede un server electrs che rende possibile la connessione con un wallet electrum. Ad oggi la connessione può essere effettuata sia dalla macchina locale sia esternamente (cosa che in un ambiente di produzione reale mainnet sarebbe assolutamente sconsigliata, ma che in fase di testing è accettabile). Per farlo ecco come fare.
@@ -108,15 +146,6 @@ root@playground:~# docker exec -ti hansel bash
 root@hansel:/opt/wald# 
 ```
 
-### minare i primi 101 blocchi
-
- per prima cosa entrare nel nodo hansel e poi lanciare il comando del bitcoin core
-
-```
-bitcoin-cli generatetoaddress 1 $(bitcoin-cli getnewaddress)
-```
-
- oppure generare manualmente un nuovo address e indicare quello nel comando sopra.
 
 
 # Come inviare un feedback/segnalazioni
