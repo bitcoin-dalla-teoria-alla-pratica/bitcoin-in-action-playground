@@ -70,7 +70,14 @@ cd /root/bitcoin-in-action-playground/bitcoin-core
 docker-compose up
 ```
 
-### minare i primi 101 blocchi
+## Entrare nel nodo "hansel"
+
+```
+root@playground:~# docker exec -ti hansel bash
+root@hansel:/opt/wald# 
+```
+
+## Minare i primi 101 blocchi
 
  per prima cosa entrare nel nodo hansel e poi lanciare il comando del bitcoin core
 
@@ -82,9 +89,12 @@ bitcoin-cli generatetoaddress 1 $(bitcoin-cli getnewaddress)
 
 ## Collegare bitcoincore wallet
 
- dopo avere installato e lanciato bitcoin-qt settare quanto segue nel file di configurazione.
+ dopo avere installato e lanciato bitcoin-qt aprire il file di configurazione come si vede nella seguente figura
+
 
 ![](https://i.ibb.co/hMTf6Mp/set-bitcoincore-wallet-config.png)
+
+ e settare quanto segue nel file di configurazione
 
 ```
 regtest=1
@@ -138,13 +148,6 @@ da electrum lanciato come sopra (fare attenzione al pallino verde che dimostri c
 il risultato è il seguente (dopo l'apertura di un canale)
 
 ![](https://i.ibb.co/hCpcyTB/electrum-channels.png)
-
-## Entrare nel nodo "hansel"
-
-```
-root@playground:~# docker exec -ti hansel bash
-root@hansel:/opt/wald# 
-```
 
 
 
