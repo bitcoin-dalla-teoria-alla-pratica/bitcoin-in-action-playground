@@ -1,3 +1,6 @@
+Grazie a [Massimo Musumeci](https://github.com/massmux/) [@massmux](https://twitter.com/massmux) per aver integrato i seguenti passaggi di bootstrap del playground.
+
+
 ## Installazione prerequisiti
 
 Questa installazione è stata eseguita su una distro Ubuntu 20.04 su una VPS standard. La distro deve possedere già Docker installato e configurato, comprensivo di docker-compose in base all'architettura della macchina. Questo il link di riferimento per [ubuntu](https://docs.docker.com/engine/install/ubuntu/). L'installazione su Ubuntu puo' essere riassunta in questo modo per semplcità:
