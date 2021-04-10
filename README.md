@@ -1,14 +1,14 @@
 # Bitcoin in Action playground
 
-In questo repository si trova il materiale a supporto delle avventure con Bitcoin descritte su https://playground.bitcoininaction.com.
+In questo repository si trova il materiale a supporto delle avventure con Bitcoin descritte su https://playground.bitcoininaction.com. Questo playground permette di creare un ambiente di test in regtest per chiunque voglia testare gli aspetti della tecnologia e provare quanto descritto nei libri indicati. Il playground è utile anche per sviluppatori e programmatori.
 
 Questo playground è stato realizzato dagli autori dei libri "[Bitcoin dalla teoria alla pratica](https://www.amazon.com/Bitcoin-Dalla-teoria-pratica-Italian/dp/B07SNNNL2P)" / "[Bitcoin in Action](https://www.amazon.com/gp/product/B08NL5ZV6X)" e dell'omonimo canale [Bitcoin in Action](https://www.youtube.com/BitcoinInAction) con lo scopo di smorzare il piu' possibile la curva di apprendimento per sviluppare con Bitcoin script e sperimentare con il protocollo Bitcoin in generale. 
 
-L'ambiente permette di testare tutti gli aspetti della blockchain di Bitcoin attraverso una predisposizione di tutto quanto necessario in modo già preconfigurato e pronto all'uso, grazie a docker. Con la collaborazione di [Massimo Musumeci](https://github.com/massmux/) [@massmux](https://twitter.com/massmux)
+L'ambiente permette di testare tutti gli aspetti della blockchain di Bitcoin attraverso una predisposizione di tutto quanto necessario in modo già preconfigurato e pronto all'uso, grazie a containers docker. Con la collaborazione di [Massimo Musumeci](https://github.com/massmux/) [@massmux](https://twitter.com/massmux)
 
 ## Installazione prerequisiti
 
- Questa installazione è stata eseguita su una distro ubuntu 20.04 su una VPS standard. La distro deve possedere già docker installato e configurato, comprensivo di docker compose in base all'architettura della macchina. Il link di riferimento per [ubuntu](https://docs.docker.com/engine/install/ubuntu/) . L'installazione sulla ubuntu puo' essere riassunta in questo modo per semplcità
+ Questa installazione è stata eseguita su una distro ubuntu 20.04 su una VPS standard. La distro deve possedere già docker installato e configurato, comprensivo di docker compose in base all'architettura della macchina. Il link di riferimento per [ubuntu](https://docs.docker.com/engine/install/ubuntu/) . L'installazione sulla ubuntu puo' essere riassunta in questo modo per semplcità:
 
 ```
 sudo apt-get update
@@ -16,13 +16,13 @@ sudo apt-get install git curl wget
 sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
 ```
 
-scarica la chiave
+ scarica la chiave dell'archivio docker
 
 ```
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 ```
 
-aggiungere il repository
+ aggiungere il repository docker per l'architettura della propria macchina
 
 ```
 echo \
@@ -30,7 +30,7 @@ echo \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
 
-installare docker e docker-compose
+ installare docker e docker-compose
 
 ```
 apt-get update
@@ -40,7 +40,7 @@ apt-get install docker-compose
 
 ## Installazione playground
 
- per prima cosa clonare il repo
+ per prima cosa clonare il repository
 
 ```
 git clone https://github.com/bitcoin-dalla-teoria-alla-pratica/bitcoin-in-action-playground.git
