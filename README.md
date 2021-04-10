@@ -143,15 +143,15 @@ il risultato è il seguente:
 
 aprire un browser sulla macchina locale:
 
- - aprire http://localhost:9737/#/node (user: fulmine, password: fulmine)
- - copiare il "Node address" 
+ - aprire http://localhost:9737/#/node (user: fulmine, password: fulmine);
+ - copiare il "Node address" ;
 
 da electrum lanciato come sopra (fare attenzione al pallino verde che dimostri che il sistema è collegato alla regtest), fare i seguenti passi:
 
- - in electrum dal tab “Channels” fai “Open Channel”
+ - in electrum dalla tab "Channels" fare "Open Channel";
  - come Remote node ID inserire {node address del punto 2.}@127.0.0.1:9735
 
-il risultato è il seguente (dopo l'apertura di un canale)
+il risultato è il seguente (dopo l'apertura di un canale). NB: ricordarsi di minare almeno 6 blocchi per ottenere le necessarie conferme alla apertura del canale.
 
 ![](https://i.ibb.co/hCpcyTB/electrum-channels.png)
 
