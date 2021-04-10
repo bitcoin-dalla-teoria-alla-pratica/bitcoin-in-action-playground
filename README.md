@@ -4,7 +4,7 @@ In questo repository si trova il materiale a supporto delle avventure con Bitcoi
 
 Questo playground è stato realizzato dagli autori dei libri "[Bitcoin dalla teoria alla pratica](https://www.amazon.com/Bitcoin-Dalla-teoria-pratica-Italian/dp/B07SNNNL2P)" / "[Bitcoin in Action](https://www.amazon.com/gp/product/B08NL5ZV6X)" e dell'omonimo canale [Bitcoin in Action](https://www.youtube.com/BitcoinInAction) con lo scopo di smorzare il piu' possibile la curva di apprendimento per sviluppare con Bitcoin script e sperimentare con il protocollo Bitcoin in generale. 
 
-L'ambiente permette di testare tutti gli aspetti della blockchain di Bitcoin attraverso una predisposizione di tutto quanto necessario in modo già preconfigurato e pronto all'uso, grazie a docker. Con la collaborazione di [@massmux](https://twitter.com/massmux)
+L'ambiente permette di testare tutti gli aspetti della blockchain di Bitcoin attraverso una predisposizione di tutto quanto necessario in modo già preconfigurato e pronto all'uso, grazie a docker. Con la collaborazione di Massimo Musumeci [@massmux](https://twitter.com/massmux)
 
 ## Installazione prerequisiti
 
@@ -81,6 +81,9 @@ docker-compose up
 ```
 electrum --regtest --oneserver --server 127.0.0.1:50001:t
 ```
+il risultato è il seguente:
+
+![](https://i.ibb.co/kB7h3cn/electrum-regtest.png)
 
 ## Collegarsi a Lightning network creando un canale
 
