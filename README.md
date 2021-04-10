@@ -72,15 +72,14 @@ root@playground:~# docker exec -ti hansel bash
 root@hansel:/opt/wald# 
 ```
 
-## Minare i primi 101 blocchi
+## Minare il primo blocco
 
- La regtest è ovviamente vuota, non ci sono blocchi inizialmente. Quindi per prima cosa entrare nel nodo hansel e poi lanciare il comando del bitcoin core come sottoindicato in modo da ottenere 50 bitcoin sull'indirizzo, pronti ad essere spesi per i test che vogliamo eseguire
+ La regtest è ovviamente vuota, non ci sono blocchi inizialmente. Quindi per prima cosa entrare nel nodo hansel e poi lanciare il comando del bitcoin core come sottoindicato in modo da ottenere il primo blocco della vostra regtest:
 
 ```
 bitcoin-cli generatetoaddress 1 $(bitcoin-cli getnewaddress)
 ```
 
- oppure generare manualmente un nuovo address e indicare quello nel comando sopra.
 
 ## Collegare bitcoincore wallet
 
@@ -111,6 +110,17 @@ http://localhost:8094/regtest/tx/%s
 ottenendo
 
 ![](https://i.ibb.co/kmTHqb6/options-settings-bitcoincore.png)
+
+
+## Minare i primi 101 blocchi, ottenere 50 bitcoin di test
+
+ Dobbiamo creare dei bitcoin da potere usare nei test. Quindi, per fare ciò, entrare nel nodo hansel e poi lanciare il comando del bitcoin core come sottoindicato in modo da ottenere 50 bitcoin sull'indirizzo, pronti ad essere spesi per i test che vogliamo eseguire
+
+```
+bitcoin-cli generatetoaddress 101 $(bitcoin-cli getnewaddress)
+```
+
+ oppure generare manualmente un nuovo address e indicare quello nel comando sopra.
 
 
 ## Collegare electrum
