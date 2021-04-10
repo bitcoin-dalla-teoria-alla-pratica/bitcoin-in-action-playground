@@ -139,7 +139,7 @@ il risultato è il seguente:
 
 ![](https://i.ibb.co/kB7h3cn/electrum-regtest.png)
 
-## Collegarsi a Lightning network creando un canale
+## Aprire un canale lightning network
 
 aprire un browser sulla macchina locale:
 
