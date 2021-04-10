@@ -4,7 +4,7 @@ In questo repository si trova il materiale a supporto delle avventure con Bitcoi
 
 Questo playground è stato realizzato dagli autori dei libri "[Bitcoin dalla teoria alla pratica](https://www.amazon.com/Bitcoin-Dalla-teoria-pratica-Italian/dp/B07SNNNL2P)" / "[Bitcoin in Action](https://www.amazon.com/gp/product/B08NL5ZV6X)" e dell'omonimo canale [Bitcoin in Action](https://www.youtube.com/BitcoinInAction) con lo scopo di smorzare il piu' possibile la curva di apprendimento per sviluppare con Bitcoin script e sperimentare con il protocollo Bitcoin in generale. 
 
-L'ambiente permette di testare tutti gli aspetti della blockchain di Bitcoin attraverso una predisposizione di tutto quanto necessario in modo già preconfigurato e pronto all'uso, grazie a docker. Con la collaborazione di Massimo Musumeci [@massmux](https://twitter.com/massmux)
+L'ambiente permette di testare tutti gli aspetti della blockchain di Bitcoin attraverso una predisposizione di tutto quanto necessario in modo già preconfigurato e pronto all'uso, grazie a docker. Con la collaborazione di [Massimo Musumeci](https://github.com/massmux/) [@massmux](https://twitter.com/massmux)
 
 ## Installazione prerequisiti
 
@@ -33,9 +33,9 @@ echo \
 installare docker e docker-compose
 
 ```
-sudo apt-get update
-sudo apt-get install docker-ce docker-ce-cli containerd.io
-sudo apt-get install docker-compose
+apt-get update
+apt-get install docker-ce docker-ce-cli containerd.io
+apt-get install docker-compose
 ```
 
 ## Installazione playground
@@ -72,6 +72,8 @@ docker-compose up
 
 ## Entrare nel nodo "hansel"
 
+ E' naturalmente possibile andare alla consolle del nodo containerizzato "hansel" per eseguire dei comandi direttamente su di esso. Per farlo, lanciare il seguente comando docker
+
 ```
 root@playground:~# docker exec -ti hansel bash
 root@hansel:/opt/wald# 
@@ -79,7 +81,7 @@ root@hansel:/opt/wald#
 
 ## Minare i primi 101 blocchi
 
- per prima cosa entrare nel nodo hansel e poi lanciare il comando del bitcoin core
+ La regtest è ovviamente vuota, non ci sono blocchi inizialmente. Quindi per prima cosa entrare nel nodo hansel e poi lanciare il comando del bitcoin core come sottoindicato in modo da ottenere 50 bitcoin sull'indirizzo, pronti ad essere spesi per i test che vogliamo eseguire
 
 ```
 bitcoin-cli generatetoaddress 1 $(bitcoin-cli getnewaddress)
@@ -89,7 +91,7 @@ bitcoin-cli generatetoaddress 1 $(bitcoin-cli getnewaddress)
 
 ## Collegare bitcoincore wallet
 
- dopo avere installato e lanciato bitcoin-qt aprire il file di configurazione come si vede nella seguente figura
+ E' possibile connettere il bitcoincore wallet al sistema cosi ottenuto. Per farlo occorre chiaramente scaricare il programma e dopo avere installato e lanciato bitcoin-qt aprire il file di configurazione come si vede nella seguente figura
 
 
 ![](https://i.ibb.co/hMTf6Mp/set-bitcoincore-wallet-config.png)
@@ -129,6 +131,7 @@ ottenendo
 ```
 electrum --regtest --oneserver --server 127.0.0.1:50001:t
 ```
+
 il risultato è il seguente:
 
 ![](https://i.ibb.co/kB7h3cn/electrum-regtest.png)
@@ -148,7 +151,6 @@ da electrum lanciato come sopra (fare attenzione al pallino verde che dimostri c
 il risultato è il seguente (dopo l'apertura di un canale)
 
 ![](https://i.ibb.co/hCpcyTB/electrum-channels.png)
-
 
 
 # Come inviare un feedback/segnalazioni
