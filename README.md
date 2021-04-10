@@ -56,14 +56,16 @@ mv bitcoin-0.21.0/* .
 rm -Rf bitcoin-0.21.0/
 
 ```
- creare dir .bitcoin/ nella dir di /root in quanto referenziata dal docker-compose file
+ prima del primo lancio del container, testare il bitcoincore localmente anche per permettergli di creare la directory .bitcoin/ e inizializzare il contenuto. Fare quindi come segue
 
 ```
-cd /root
-mkdir .bitcoin
+cd /root/bitcoin-in-action-playground/bitcoin-core
+./bin/bitcoind -daemon
+# attendere un paio di minuti e poi spegnere il demone
+./bin/bitcoin-cli stop
 ```
 
- lanciare i container
+ Ora la .bitcoin/ è stata inizializzata, è quindi possibile lanciare i container
 
 ```
 cd /root/bitcoin-in-action-playground/bitcoin-core
