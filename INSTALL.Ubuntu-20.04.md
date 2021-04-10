@@ -38,6 +38,8 @@ Per prima cosa clonare il repository
 git clone https://github.com/bitcoin-dalla-teoria-alla-pratica/bitcoin-in-action-playground.git
 ```
 
+[playground-bootstrap#bitcoin-core](https://playground.bitcoininaction.com/playground-bootstrap#bitcoin-core)
+
 Scaricare la versione desiderata di Bitcoin Core dal [repository](https://bitcoincore.org/bin/). In questo esempio prendiamo la versione 0.21.0. Fare attenzione ovviamente a scaricare la versione adatta per la propria architettura:
 
 ```
@@ -58,6 +60,8 @@ docker-compose up
 
 ## Entrare nel nodo "hansel"
 
+[playground-overview#hansel-e-gretel](https://playground.bitcoininaction.com/playground-overview#hansel-e-gretel)
+
 E' naturalmente possibile attivare la console del nodo containerizzato "hansel" per eseguire dei comandi direttamente all'interno di esso. Per farlo, lanciare il seguente comando Docker
 
 ```
@@ -66,6 +70,8 @@ root@hansel:/opt/wald#
 ```
 
 ## Minare il primo blocco
+
+[playground/minare-il-primo-blocco-bitcoin](https://playground.bitcoininaction.com/minare-il-primo-blocco-bitcoin)
 
 La regtest è ovviamente vuota, non ci sono blocchi inizialmente. Quindi per prima cosa bisogna entrare nel nodo hansel e poi lanciare il comando di Bitcoin Core come sottoindicato in modo da ottenere il primo blocco della vostra regtest:
 
