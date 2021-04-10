@@ -97,6 +97,10 @@ da electrum lanciato come sopra (fare attenzione al pallino verde che dimostri c
  - in electrum dal tab “Channels” fai “Open Channel”
  - come Remote node ID inserire {node address del punto 2.}@127.0.0.1:9735
 
+il risultato è il seguente (dopo l'apertura di un canale)
+
+![](https://i.ibb.co/hCpcyTB/electrum-channels.png)
+
 ## Entrare nel nodo "hansel"
 
 ```
