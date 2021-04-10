@@ -6,12 +6,6 @@ Questo playground è stato realizzato dagli autori dei libri "[Bitcoin dalla teo
 
 L'ambiente permette di testare tutti gli aspetti della blockchain di Bitcoin attraverso una predisposizione di tutto quanto necessario in modo già preconfigurato e pronto all'uso, grazie a containers docker.
 
-## Ubuntu 20.04
-
-Grazie a [Massimo Musumeci](https://github.com/massmux/) [@massmux](https://twitter.com/massmux) per aver integrato i seguenti passaggi di bootstrap del playground.
-
-[INSTALL.Ubuntu-20.04.md](INSTALL.Ubuntu-20.04.md)
-
 Seguono alcune delle simulazioni descritte su playground.bitcoininaction.com
 
 - Collegare Bitcoin dekstop wallet
@@ -22,6 +16,12 @@ Seguono alcune delle simulazioni descritte su playground.bitcoininaction.com
 - Lightning Network
 	- Aprire un canale
 	  [link](https://playground.bitcoininaction.com/lightning-network#aprire-un-canale-fra-electrum-e-c-lightning)
+
+## Ubuntu 20.04
+
+Grazie a [Massimo Musumeci](https://github.com/massmux/) [@massmux](https://twitter.com/massmux) per aver integrato i seguenti passaggi di bootstrap del playground.
+
+[INSTALL.Ubuntu-20.04.md](INSTALL.Ubuntu-20.04.md)
 
 # Come inviare un feedback/segnalazioni
 
