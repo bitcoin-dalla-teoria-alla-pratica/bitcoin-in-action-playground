@@ -56,10 +56,9 @@ mv bitcoin-0.21.0/* .
 rm -Rf bitcoin-0.21.0/
 
 ```
- Creare la directory .bitcoin/ e quindi lanciare i container
+ Siamo pronti ora per lanciare i containers:
 
 ```
-mkdir /root/.bitcoin
 cd /root/bitcoin-in-action-playground/bitcoin-core
 docker-compose up
 ```
