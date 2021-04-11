@@ -5,20 +5,21 @@ Avviando questo tutorial verrai guidato nei primi passi che ti consentiranno di
 - collegare il tuo portafoglio
 - rivere dei 5000 bitcoin
 
+## Next steps
+
+1. Scaricare Bitcoin Core
+2. Playground bootstrap
+3. Connettere Electrum al playground tramite ngrok
 
 ## Install Bitcoin Core
 
 Esegui il seguente snippet per scaricare Bitcoin Core 0.21
 
 ```sh
-wget https://bitcoincore.org/bin/bitcoin-core-0.21.0/bitcoin-0.21.0-x86_64-linux-gnu.tar.gz
-
-tar xzvf bitcoin-0.21.0-x86_64-linux-gnu.tar.gz
-
-mv bitcoin-0.21.0/* bitcoin-core
-
-rm -Rf bitcoin-0.21.0
-
+wget https://bitcoincore.org/bin/bitcoin-core-0.21.0/bitcoin-0.21.0-x86_64-linux-gnu.tar.gz && \
+tar xzvf bitcoin-0.21.0-x86_64-linux-gnu.tar.gz && \
+mv bitcoin-0.21.0/* bitcoin-core && \
+rm -Rf bitcoin-0.21.0 && \
 rm -Rf bitcoin-0.21.0-x86_64-linux-gnu.tar.gz
 ```
 
@@ -28,7 +29,11 @@ rm -Rf bitcoin-0.21.0-x86_64-linux-gnu.tar.gz
 docker-compose up
 ```
 
-## Bitcoin blockchain explorer
+Attendere messaggio come descritto al seguente indirizzo
+
+https://playground.bitcoininaction.com/playground-bootstrap#fuoco-alle-polveri
+
+### Bitcoin blockchain explorer
 
 Click <walkthrough-web-preview-icon></walkthrough-web-preview-icon> and change
 the preview port to 8094.
