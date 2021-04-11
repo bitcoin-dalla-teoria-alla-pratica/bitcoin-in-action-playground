@@ -102,3 +102,27 @@ services:
     links:
       - hansel
     entrypoint: /opt/entrypoint.sh
+  lnd:
+    container_name: lnd
+    hostname: lnd
+    image: lightninglabs/lnd:v0.12.1-beta
+    volumes:
+      - ./lnd/lnd-data:/root/.lnd
+      - ./lnd/entrypoint.sh:/opt/entrypoint.sh
+    entrypoint: ["/opt/entrypoint.sh"]
+    environment:
+      - NETWORK=regtest
+      - CHAIN=bitcoin
+      - BACKEND=bitcoind
+      - RPCUSER=gretel
+      - RPCPASS=1337
+      - HOSTNAME=0.0.0.0
+      - BACKEND_RPC_HOST=gretel
+      - BACKEND_ZMQPUBRAWBLOCK=tcp://gretel:38444
+      - BACKEND_ZMQPUBRAWTX=tcp://gretel:48444
+    ports:
+      - 10009:10009
+      - 19735:9735
+    links:
+      - gretel
+      - lightningd
