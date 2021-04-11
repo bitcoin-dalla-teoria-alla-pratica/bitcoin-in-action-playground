@@ -23,6 +23,11 @@ Grazie a [Massimo Musumeci](https://github.com/massmux/) [@massmux](https://twit
 
 [INSTALL.Ubuntu-20.04.md](INSTALL.Ubuntu-20.04.md)
 
+## Run on Google Cloud Shell
+
+[![Open this project in Cloud
+Shell](http://gstatic.com/cloudssh/images/open-btn.png)](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/bitcoin-dalla-teoria-alla-pratica/bitcoin-in-action-playground.git&tutorial=gcp-shell-tutorial.md&shellonly=true)
+
 # Come inviare un feedback/segnalazioni
 
 Non esistate ad inviarci feedback e segnalazioni!!
