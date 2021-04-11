@@ -10,7 +10,7 @@ Avviando questo tutorial verrai guidato nei primi passi che ti consentiranno di
 
 Esegui il seguente snippet per scaricare Bitcoin Core 0.21
 
-```
+```sh
 wget https://bitcoincore.org/bin/bitcoin-core-0.21.0/bitcoin-0.21.0-x86_64-linux-gnu.tar.gz
 
 tar xzvf bitcoin-0.21.0-x86_64-linux-gnu.tar.gz
@@ -24,7 +24,7 @@ rm -Rf bitcoin-0.21.0-x86_64-linux-gnu.tar.gz
 
 ## Playground bootstrap
 
-```
+```sh
 docker-compose up
 ```
 
@@ -46,7 +46,7 @@ TODO step to install ngrok and publish 9735 and 50001 port.
 
 Using the ngrok domain and port to connect your Electrum wallet
 
-```
+```terminal
 --regtest --oneserver --server {ngrok domain}:{ngrok port}:t
 ```
 
