@@ -40,6 +40,18 @@ the preview port to 8094.
 
 If everything is fine you'll see something.
 
+### Mining
+
+<walkthrough-open-cloud-shell-button></walkthrough-open-cloud-shell-button> to
+open a new shell leaving docker-compose running
+
+```sh
+cd cloudshell_open/bitcoin-in-action-playground
+```
+
+and follow
+https://playground.bitcoininaction.com/minare-il-primo-blocco-bitcoin
+
 ## Publish ports of Cloud Shell
 
 To be able to connect with ***unauthenticated*** not HTTP only we need something better of web

@@ -6,7 +6,7 @@ sudo mv ngrok /usr/sbin/ngrok
 chmod o+x /usr/sbin/ngrok
 mkdir -p $HOME/.ngrok2 
 cp ngrok.yml $HOME/.ngrok2/ngrok.yml
-echo "https://dashboard.ngrok.com/get-started/your-authtoken, ngrok auth token?"
+echo "https://dashboard.ngrok.com/get-started/your-authtoken ... ngrok auth token?"
 read line
 sed -i "s/NGROK_AUTH_TOKEN/$line/g" $HOME/.ngrok2/ngrok.yml
 
