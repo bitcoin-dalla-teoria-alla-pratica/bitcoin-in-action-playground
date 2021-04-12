@@ -2,3 +2,4 @@
 bitcoin-core
 *.swp
 *.btcdeb_history
+ngrok-stable-linux-amd64*

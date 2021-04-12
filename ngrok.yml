@@ -1,4 +1,4 @@
-authtoken: 
+authtoken: NGROK_AUTH_TOKEN
 region: eu
 tunnels:
   hansel_18443:

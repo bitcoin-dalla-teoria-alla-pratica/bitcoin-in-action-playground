@@ -42,16 +42,21 @@ If everything is fine you'll see something.
 
 ## Publish ports of Cloud Shell
 
-To be able to connect with non-HTTP protocol we need something better of web
+To be able to connect with ***unauthenticated*** not HTTP only we need something better of web
 preview :)
 
-TODO step to install ngrok and publish 9735 and 50001 port.
+```sh
+./install-ngrok.sh
+```
+```sh
+ngrok start blockchain-explorer_50001 blockchain-explorer_8094 lightningd_9735 lnd_19735
+```
 
-## Connect your Electrum
+### Connect your Electrum
 
 Using the ngrok domain and port to connect your Electrum wallet
 
 ```terminal
---regtest --oneserver --server {ngrok domain}:{ngrok port}:t
+--regtest --oneserver --server {ngrok domain 500001}:{ngrok 50001 port}:t
 ```
 
