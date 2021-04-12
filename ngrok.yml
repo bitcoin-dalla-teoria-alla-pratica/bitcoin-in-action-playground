@@ -1,0 +1,17 @@
+authtoken: 
+region: eu
+tunnels:
+  zinco_9000:
+    addr: 9000
+    proto: http
+  zinco_7000:
+    addr: 7000
+    proto: http
+  zinco_ssh:
+    addr:
+    proto: tcp
+    # remote_addr: 
+  zinco_et:
+    addr: 
+    proto: tcp
+    # remote_addr: 
