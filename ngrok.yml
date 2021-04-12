@@ -1,17 +1,33 @@
 authtoken: 
 region: eu
 tunnels:
-  zinco_9000:
-    addr: 9000
-    proto: http
-  zinco_7000:
-    addr: 7000
-    proto: http
-  zinco_ssh:
-    addr:
+  hansel_18443:
+    addr: 18443
     proto: tcp
-    # remote_addr: 
-  zinco_et:
-    addr: 
+  hansel_18444:
+    addr: 18444
     proto: tcp
-    # remote_addr: 
+  gretel_28444:
+    addr: 28444
+    proto: tcp
+  blockchain-explorer_50001:
+    addr: 50001
+    proto: tcp
+  blockchain-explorer_8094:
+    addr: 8094
+    proto: tcp
+  blockchain-reader_8080:
+    addr: 8080
+    proto: tcp
+  lightningd_9735:
+    addr: 9735
+    proto: tcp
+  lightningd_9737:
+    addr: 9737
+    proto: tcp
+  lnd_19735:
+    addr: 19735
+    proto: tcp
+  lnd_10009:
+    addr: 10009
+    proto: tcp
