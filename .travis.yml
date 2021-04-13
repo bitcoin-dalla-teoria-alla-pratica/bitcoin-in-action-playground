@@ -7,6 +7,11 @@ services:
   - docker
 
 before_install:
+  - wget https://bitcoincore.org/bin/bitcoin-core-0.21.0/bitcoin-0.21.0-x86_64-linux-gnu.tar.gz
+  - tar xzvf bitcoin-0.21.0-x86_64-linux-gnu.tar.gz
+  - mv bitcoin-0.21.0/* bitcoin-core
+  - rm -Rf bitcoin-0.21.0
+  - rm -Rf bitcoin-0.21.0-x86_64-linux-gnu.tar.gz
   - sudo rm /usr/local/bin/docker-compose
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
