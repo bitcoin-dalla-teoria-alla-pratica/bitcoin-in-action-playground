@@ -26,6 +26,10 @@ rm -Rf bitcoin-0.21.0-x86_64-linux-gnu.tar.gz
 ## Playground bootstrap
 
 ```sh
+docker-compose pull
+```
+
+```sh
 docker-compose up
 ```
 
