@@ -28,4 +28,8 @@ else
     cp ./yogh-explorer-server/target/*.war ../webapps/explorer.war
 fi
 
-catalina.sh run
+if [[ -z "${DOCKER_BUILD}" ]]; then
+	catalina.sh run
+else
+	echo "DOCKER_BUILD, no foreground jobs.."
+fi

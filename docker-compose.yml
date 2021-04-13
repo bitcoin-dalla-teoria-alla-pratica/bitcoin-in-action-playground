@@ -4,7 +4,10 @@ services:
   hansel:
     container_name: hansel
     hostname: hansel
-    image: debian
+    image: bitcoininaction/hansel:latest
+    build:
+        context: .
+        dockerfile: Dockerfile.hansel
     environment:
       - BX_CONFIG=/opt/wald/bx.cfg
     volumes:
@@ -21,7 +24,7 @@ services:
   gretel:
     container_name: gretel
     hostname: gretel
-    image: debian
+    image: bitcoininaction/hansel:latest
     environment:
       - BX_CONFIG=/opt/wald/bx.cfg
     volumes:
@@ -79,7 +82,10 @@ services:
   blockchain-reader:
     container_name: blockchain-reader
     hostname: blockchain-reader
-    image: tomcat
+    image: bitcoininaction/blockchain-reader
+    build:
+        context: .
+        dockerfile: Dockerfile.blockchain-reader
     ports:
       - 8080:8080 # Tomcat manager w/ user "tomcat" and pwd "tomcat" http://localhost:8080/manager/html
     command: ["/opt/entrypoint.sh"]
@@ -90,7 +96,10 @@ services:
   lightningd:
     container_name: lightningd
     hostname: lightningd
-    image: elementsproject/lightningd
+    image: bitcoininaction/lightningd:latest
+    build:
+        context: .
+        dockerfile: Dockerfile.lightningd
     ports:
       - 9735:9735
       - 9737:9737

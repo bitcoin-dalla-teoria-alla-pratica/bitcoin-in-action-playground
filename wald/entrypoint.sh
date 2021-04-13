@@ -71,5 +71,9 @@ fi
 
 cd
 
-# foreground bitcoin daemon
-bitcoind
+if [[ -z "${DOCKER_BUILD}" ]]; then
+	# foreground bitcoin daemon
+	bitcoind
+else
+	echo "DOCKER_BUILD set, no foreground jobs.."
+fi

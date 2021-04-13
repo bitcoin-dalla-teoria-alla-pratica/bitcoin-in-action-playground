@@ -6,6 +6,14 @@ apt-get install -y curl git
 curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -
 apt-get install -y nodejs
 
+if [[ -z "${DOCKER_BUILD}" ]]; then
+	# run instead of build
+else
+	echo "DOCKER_BUILD, no foreground jobs.."
+	npm i -D spark-wallet
+	exit
+fi
+
 # https://github.com/ElementsProject/lightning/blob/master/contrib/startup_regtest.sh#L122
 while ! bitcoin-cli ping 2> /tmp/null; do echo "awaiting bitcoind..." && sleep 1; done
 
@@ -23,3 +31,4 @@ lightningd &
 while ! lightning-cli getinfo 2> /tmp/null; do echo "awaiting lightningd..." && sleep 1; done
 
 npx spark-wallet -l ~/.lightning/regtest --login fulmine:fulmine --no-tls -i 0.0.0.0
+

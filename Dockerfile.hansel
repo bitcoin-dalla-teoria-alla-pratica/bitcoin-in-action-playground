@@ -1,0 +1,7 @@
+FROM debian
+
+ADD ./wald /opt/wald
+ADD ./bitcoin-core/bin/bitcoin-cli /usr/bin/bitcoin-cli
+ADD ./bitcoin-core/bin/bitcoind /usr/bin/bitcoind
+
+RUN DOCKER_BUILD=1 /opt/wald/entrypoint.sh

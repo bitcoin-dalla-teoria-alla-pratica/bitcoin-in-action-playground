@@ -1,0 +1,7 @@
+FROM tomcat
+
+ADD ./blockchain-reader/tomcat/tomcat-users.xml /usr/local/tomcat/conf/tomcat-users.xml
+ADD ./blockchain-reader/tomcat/manager-webapp-context.xml /opt/manager-webapp-context.xml
+ADD ./blockchain-reader/entrypoint.sh /opt/entrypoint.sh
+
+RUN DOCKER_BUILD=1 /opt/entrypoint.sh

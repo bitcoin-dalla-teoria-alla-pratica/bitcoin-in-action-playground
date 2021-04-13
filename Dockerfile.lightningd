@@ -1,0 +1,5 @@
+FROM elementsproject/lightningd
+
+ADD ./lightningd/entrypoint.sh /opt/entrypoint.sh
+
+RUN DOCKER_BUILD=1 /opt/entrypoint.sh

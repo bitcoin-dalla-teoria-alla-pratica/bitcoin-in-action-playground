@@ -16,12 +16,17 @@ script:
   - echo "Hey from script"
   - docker -v
   - docker-compose -v
-
+  - docker-compose build hansel
+  - docker-compose build blockchain-reader
+  - docker-compose build lightningd
 
 deploy:
   provider: script
   script:
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    - docker push bitcoininaction/hansel:latest
+    - docker push bitcoininaction/blockchain-reader:latest
+    - docker push bitcoininaction/lightningd:latest
   on:
     branch: master
 
