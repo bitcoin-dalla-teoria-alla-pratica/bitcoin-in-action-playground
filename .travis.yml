@@ -27,11 +27,7 @@ script:
 
 deploy:
   provider: script
-  script:
-    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-    - docker push bitcoininaction/hansel:latest
-    - docker push bitcoininaction/blockchain-reader:latest
-    - docker push bitcoininaction/lightningd:latest
+  script: bash .travis-docker_push
   on:
     branch: master
 
