@@ -1,5 +1,8 @@
 # Bitcoin in Action playground
 
+[![Build
+Status](https://travis-ci.com/bitcoin-dalla-teoria-alla-pratica/bitcoin-in-action-playground.svg?branch=master)](https://travis-ci.com/bitcoin-dalla-teoria-alla-pratica/bitcoin-in-action-playground)
+
 In questo repository si trova il materiale a supporto delle avventure con Bitcoin descritte su https://playground.bitcoininaction.com. Questo playground permette di creare un ambiente di test in regtest per chiunque voglia testare gli aspetti della tecnologia e provare quanto descritto nei libri indicati. Il playground è utile anche per sviluppatori e programmatori.
 
 Questo playground è stato realizzato dagli autori dei libri "[Bitcoin dalla teoria alla pratica](https://www.amazon.com/Bitcoin-Dalla-teoria-pratica-Italian/dp/B07SNNNL2P)" / "[Bitcoin in Action](https://www.amazon.com/gp/product/B08NL5ZV6X)" e dell'omonimo canale [Bitcoin in Action](https://www.youtube.com/BitcoinInAction) con lo scopo di smorzare il piu' possibile la curva di apprendimento per sviluppare con Bitcoin script e sperimentare con il protocollo Bitcoin in generale. 
