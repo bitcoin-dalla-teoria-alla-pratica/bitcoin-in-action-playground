@@ -58,7 +58,7 @@ To be able to connect with ***unauthenticated*** not HTTP only we need something
 preview :)
 
 ```sh
-./install-ngrok.sh
+./gcp-shell-install-ngrok.sh
 ```
 ```sh
 ngrok start blockchain-explorer_50001 blockchain-explorer_8094 lightningd_9735 lnd_19735
