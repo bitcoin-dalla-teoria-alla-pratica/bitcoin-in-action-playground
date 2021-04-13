@@ -29,7 +29,8 @@ else
 fi
 
 if [[ -z "${DOCKER_BUILD}" ]]; then
+	# foreground tomcat
 	catalina.sh run
 else
-	echo "DOCKER_BUILD, no foreground jobs.."
+	echo "DOCKER_BUILD set, no foreground jobs.."
 fi

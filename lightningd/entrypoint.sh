@@ -7,9 +7,9 @@ curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -
 apt-get install -y nodejs
 
 if [[ -z "${DOCKER_BUILD}" ]]; then
-	# run instead of build
+	echo "run instead of build"
 else
-	echo "DOCKER_BUILD, no foreground jobs.."
+	echo "DOCKER_BUILD set, no foreground jobs.."
 	npm i -D spark-wallet
 	exit
 fi
