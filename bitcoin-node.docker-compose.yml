@@ -1,0 +1,120 @@
+version: "3"
+
+services:
+  hansel:
+    container_name: hansel
+    hostname: hansel
+    image: bitcoin-node
+    environment:
+      - BX_CONFIG=/opt/wald/bx.cfg
+    volumes:
+      - ./hansel:/root/.bitcoin
+    entrypoint: /root/run.sh
+    working_dir: /opt/wald
+    ports:
+      - 18443:18443
+      - 18444:18444
+  gretel:
+    container_name: gretel
+    hostname: gretel
+    image: bitcoin-node
+    environment:
+      - BX_CONFIG=/opt/wald/bx.cfg
+    volumes:
+      - ./gretel:/root/.bitcoin
+    entrypoint: /root/run.sh
+    working_dir: /opt/wald
+    links:
+      - hansel
+    ports:
+      - 28444:18444
+  oz:
+    container_name: oz
+    hostname: oz
+    image: node
+    volumes:
+      - ./oz:/opt/emerald-city
+    entrypoint: ["/opt/emerald-city/entrypoint.sh"]
+    working_dir: /opt/emerald-city
+    links:
+      - bitcoinjs-regtest-server
+      - gretel
+  blockchain-explorer:
+    container_name: blockchain-explorer
+    hostname: blockchain-explorer
+    image: blockstream/esplora
+    environment:
+      - DISABLE_TOR=1 # blockchain-exporer/runs.sh#L37-L45
+      - DISABLE_GENERATETOADDRESS=1 # blockchain-exporer/runs.sh#L256-L263
+    ports:
+      - 50001:50001
+      - 8094:80
+    volumes:
+      - ./blockchain-explorer:/data
+      - ./blockchain-explorer/run.sh:/srv/explorer/run.sh # patch to disable Tor and auto mining of 100 blocks...
+    command: ['/srv/explorer/run.sh', 'bitcoin-regtest', 'explorer']
+    links:
+      - gretel
+  bitcoinjs-regtest-server:
+    container_name: bitcoinjs-regtest-server
+    hostname: bitcoinjs-regtest-server
+    image: junderw/bitcoinjs-regtest-server
+    # uncomment if you want to connect
+    # bitcoinjs-lib from outside
+    #ports:
+    #  - 8888:8080
+    links:
+      - hansel
+    volumes:
+      - ./bitcoinjs-regtest-server/bitcoin-data:/root/.bitcoin
+      - ./bitcoinjs-regtest-server/run_bitcoind_service.sh:/root/run_bitcoind_service.sh # patch to disable mining of 432 blocks...
+  blockchain-reader:
+    container_name: blockchain-reader
+    hostname: blockchain-reader
+    image: tomcat
+    ports:
+      - 8080:8080 # Tomcat manager w/ user "tomcat" and pwd "tomcat" http://localhost:8080/manager/html
+    command: ["/opt/entrypoint.sh"]
+    volumes:
+      - ./blockchain-reader/tomcat/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
+      - ./blockchain-reader/tomcat/manager-webapp-context.xml:/opt/manager-webapp-context.xml
+      - ./blockchain-reader/entrypoint.sh:/opt/entrypoint.sh
+  lightningd:
+    container_name: lightningd
+    hostname: lightningd
+    image: elementsproject/lightningd
+    ports:
+      - 9735:9735
+      - 9737:9737
+    volumes:
+      - ./lightningd/lightning:/root/.lightning
+      - ./lightningd/bitcoin:/root/.bitcoin
+      - ./lightningd/entrypoint.sh:/opt/entrypoint.sh
+      - ./lightningd/spark-wallet:/root/.spark-wallet
+    links:
+      - hansel
+    entrypoint: /opt/entrypoint.sh
+  lnd:
+    container_name: lnd
+    hostname: lnd
+    image: lightninglabs/lnd:v0.12.1-beta
+    volumes:
+      - ./lnd/lnd-data:/root/.lnd
+      - ./lnd/entrypoint.sh:/opt/entrypoint.sh
+    entrypoint: ["/opt/entrypoint.sh"]
+    environment:
+      - NETWORK=regtest
+      - CHAIN=bitcoin
+      - BACKEND=bitcoind
+      - RPCUSER=gretel
+      - RPCPASS=1337
+      - HOSTNAME=0.0.0.0
+      - BACKEND_RPC_HOST=gretel
+      - BACKEND_ZMQPUBRAWBLOCK=tcp://gretel:38444
+      - BACKEND_ZMQPUBRAWTX=tcp://gretel:48444
+    ports:
+      - 10009:10009
+      - 19735:9735
+    links:
+      - gretel
+      - lightningd
