@@ -2,3 +2,4 @@
 bitcoin-core
 *.swp
 *.btcdeb_history
+__*

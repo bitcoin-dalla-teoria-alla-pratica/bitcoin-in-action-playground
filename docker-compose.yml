@@ -4,16 +4,12 @@ services:
   hansel:
     container_name: hansel
     hostname: hansel
-    image: debian
+    image: bitcoin-node
     environment:
       - BX_CONFIG=/opt/wald/bx.cfg
     volumes:
-      - ./bitcoin-core/bin/bitcoin-cli:/usr/bin/bitcoin-cli
-      - ./bitcoin-core/bin/bitcoind:/usr/bin/bitcoind
       - ./hansel:/root/.bitcoin
-      - ./wald:/opt/wald
-      - ./wald/vim/.vimrc:/root/.vimrc
-    entrypoint: /opt/wald/entrypoint.sh
+    entrypoint: /root/run.sh
     working_dir: /opt/wald
     ports:
       - 18443:18443
@@ -21,16 +17,12 @@ services:
   gretel:
     container_name: gretel
     hostname: gretel
-    image: debian
+    image: bitcoin-node
     environment:
       - BX_CONFIG=/opt/wald/bx.cfg
     volumes:
-      - ./bitcoin-core/bin/bitcoin-cli:/usr/bin/bitcoin-cli
-      - ./bitcoin-core/bin/bitcoind:/usr/bin/bitcoind
       - ./gretel:/root/.bitcoin
-      - ./wald:/opt/wald
-      - ./wald/vim/.vimrc:/root/.vimrc
-    entrypoint: /opt/wald/entrypoint.sh
+    entrypoint: /root/run.sh
     working_dir: /opt/wald
     links:
       - hansel
