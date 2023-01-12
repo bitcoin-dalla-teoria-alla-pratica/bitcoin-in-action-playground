@@ -65,7 +65,7 @@ preview :)
 ./gcp-shell-install-ngrok.sh
 ```
 ```sh
-ngrok start blockchain-explorer_50001 blockchain-explorer_8094 lightningd_9735 lnd_19735
+ngrok start blockchain-explorer_50001 lightningd_9735 lnd_19735
 ```
 
 ### Connect your Electrum
